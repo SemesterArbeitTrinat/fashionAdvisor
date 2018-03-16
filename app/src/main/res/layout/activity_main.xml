@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="floria.fashionadvisor.MainActivity">
+
+    <include layout="@layout/menu_bar"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="300dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp">
+
+        <Button
+            android:id="@+id/galerie"
+            android:layout_width="160dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal|center"
+            android:text="Galerie" />
+
+        <Button
+            android:id="@+id/matchen"
+            android:layout_width="160dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Matchen" />
+
+
+        <Button
+            android:id="@+id/neuphoto"
+            android:layout_width="160dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center_horizontal"
+            android:elevation="0dp"
+            android:text="Neu aufnehemen" />
+
+
+    </LinearLayout>
+
+
+
+</android.support.constraint.ConstraintLayout>
