@@ -7,15 +7,63 @@
     android:layout_height="match_parent"
     tools:context=".Galerie" >
 
-    <include layout="@layout/menu_bar"></include>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="141dp"
-        android:layout_height="102dp"
-        android:layout_marginTop="200dp"
-        android:text="Galerie"
-        app:layout_constraintTop_toTopOf="@+id/include2"
-        tools:layout_editor_absoluteX="122dp" />
+    <include
+        android:id="@+id/include"
+        layout="@layout/menu_bar"></include>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabGalerie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintTop_toBottomOf="@+id/include"
+        tools:layout_editor_absoluteX="0dp">
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/favoris"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@android:drawable/btn_star_big_on" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/Pulli"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pulli" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/tshirt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tee-shirt" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/Hosen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hosen" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/Short"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Short" />
+
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/Kleid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kleid" />
+
+    </android.support.design.widget.TabLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPagerGalerie"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintTop_toBottomOf="@+id/tabGalerie" />
 
 </android.support.constraint.ConstraintLayout>

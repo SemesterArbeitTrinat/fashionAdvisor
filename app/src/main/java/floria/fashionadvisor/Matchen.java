@@ -37,7 +37,7 @@ public class Matchen extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.retour:
-                Matchen.this.finish();
+                finish();
                 return true;
 
         }
