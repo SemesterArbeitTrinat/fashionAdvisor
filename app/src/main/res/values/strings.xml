@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">FashionAdvisor</string>
+    <string name="farbTittle">Farbe</string>
+
+    <string-array name="farbe_array">
+        <item>- - - - -</item>
+        <item>Schwarz</item>
+        <item>Weiss</item>
+        <item>Grau</item>
+        <item>Blau</item>
+        <item>Braun</item>
+        <item>Rot</item>
+        <item>Rosa</item>
+        <item>Grün</item>
+    </string-array>
+
+    <string-array name="cat_array">
+        <item>sport</item>
+        <item>abend</item>
+        <item>sommer</item>
+        <item>winter</item>
+        <item>buisness</item>
+
+    </string-array>
+
+
 </resources>
