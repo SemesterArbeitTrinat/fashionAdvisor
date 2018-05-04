@@ -1,8 +1,9 @@
 package floria.fashionadvisor.Photo;
 
-import android.content.ClipData;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.graphics.Camera;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,16 +14,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.CheckedTextView;
+import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.GridLayout;
 import android.widget.GridView;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.Toast;
 
-import java.lang.reflect.Array;
-
-import floria.fashionadvisor.MainActivity;
 import floria.fashionadvisor.R;
 
 /**
@@ -31,46 +28,85 @@ import floria.fashionadvisor.R;
 
 public class SetAttribut extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
+
+private Button top;
+private Button down;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.set_attribut);
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Parametern");
         setSupportActionBar(toolbar);
 
+        top = (Button) findViewById(R.id.OT);
+        down = (Button) findViewById(R.id.UT);
+
+
         FrameLayout mFrame= findViewById(R.id.photo_view);
-
-
-        GridView test = (GridView) findViewById(R.id.test);
+        RadioGroup cut= findViewById(R.id.radioGroup);
+        GridView style = (GridView) findViewById(R.id.test);
 
         Spinner spinner = (Spinner) findViewById(R.id.farbe);
-
         spinner.setOnItemSelectedListener(this);
 
-
-        //test.setOnItemSelectedListener(this);
+        chooseTopCat();
         chooseColor(spinner);
 
-            String[] cat= getResources().getStringArray(R.array.cat_array);
+       String[] styleList= getResources().getStringArray(R.array.style_array);
 // Create an ArrayAdapter using the string array and a default spinner layout
 
-        TextCheked adapter = new TextCheked(this,cat);
-        test.setAdapter(adapter);
+        TextCheked adapter = new TextCheked(this,styleList);
+        style.setAdapter(adapter);
 
+    }
+
+
+    private void chooseTopCat(){
+        top.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                TopCat mTopCat = new TopCat() ;
+                mTopCat.setIndex(1);
+                loadFragment(mTopCat);
+                top.setBackgroundColor(Color.DKGRAY);
+                down.setBackgroundColor(Color.TRANSPARENT);
+
+            }
+        });
+// perform setOnClickListener event on Second Button
+        down.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TopCat mTopCat = new TopCat() ;
+                mTopCat.setIndex(2);
+                loadFragment(mTopCat);
+                down.setBackgroundColor(Color.DKGRAY);
+                top.setBackgroundColor(Color.TRANSPARENT);
+            }
+        });
 
 
     }
+
+    private void loadFragment(Fragment fragment) {
+// create a FragmentManager
+        FragmentManager fm = getFragmentManager();
+// create a FragmentTransaction to begin the transaction and replace the Fragment
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+// replace the FrameLayout with new Fragment
+        fragmentTransaction.replace(R.id.frameLayout, fragment);
+        fragmentTransaction.commit(); // save the changes
+    }
+
    private void chooseColor(Spinner spinner){
 
        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-               R.array.farbe_array, android.R.layout.simple_spinner_item);
+               R.array.color_array, android.R.layout.simple_spinner_item);
 // Specify the layout to use when the list of choices appears
        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 // Apply the adapter to the spinner
-
-
        spinner.setAdapter(adapter);
 
    }
@@ -83,9 +119,8 @@ public class SetAttribut extends AppCompatActivity implements AdapterView.OnItem
 
     @Override
     public void onNothingSelected(AdapterView<?> arg0) {
-// TODO Auto-generated method stub
-
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //ajoute les entrées de menu_test à l'ActionBar
@@ -98,16 +133,12 @@ public class SetAttribut extends AppCompatActivity implements AdapterView.OnItem
         switch (item.getItemId()) {
             case R.id.retour:
                 finish();
-                Intent callNeuAufnehmen = new Intent(SetAttribut.this, NeuAufnehmen.class);
+                Intent callNeuAufnehmen = new Intent(SetAttribut.this, NewPhoto.class);
                 startActivity(callNeuAufnehmen);
                 return true;
-
         }
         return true;
     }
-
-
-
 }
 
 

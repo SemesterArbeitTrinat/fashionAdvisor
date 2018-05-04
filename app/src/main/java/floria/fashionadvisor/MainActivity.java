@@ -7,7 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
-import floria.fashionadvisor.Photo.NeuAufnehmen;
+import floria.fashionadvisor.Photo.NewPhoto;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         neuphoto.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                Intent callNeuAufnehmen = new Intent(MainActivity.this, NeuAufnehmen.class);
+                Intent callNeuAufnehmen = new Intent(MainActivity.this, NewPhoto.class);
                 startActivity(callNeuAufnehmen);
             }
         });

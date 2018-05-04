@@ -21,19 +21,19 @@ import floria.fashionadvisor.R;
 
 public class TextCheked extends BaseAdapter {
 
-    String[] cat;
-    Context context;
-    LayoutInflater inflter;
+   private String[] style;
+   private Context context;
+   private LayoutInflater inflter;
 
-    public TextCheked(Context applicationContext, String[] cat) {
+    public TextCheked(Context applicationContext, String[] style) {
         this.context = applicationContext;
-        this.cat=cat;
+        this.style=style;
         inflter = (LayoutInflater.from(applicationContext));
     }
 
     @Override
     public int getCount() {
-        return cat.length;
+        return style.length;
     }
     @Override
     public Object getItem(int i) {
@@ -46,9 +46,10 @@ public class TextCheked extends BaseAdapter {
 
    @Override
     public View getView(int position, View view, ViewGroup parent) {
-        view = inflter.inflate(R.layout.activity_gv, null);
+
+       view = inflter.inflate(R.layout.activity_gv, null);
        final CheckedTextView mTextV = (CheckedTextView) view.findViewById(R.id.mTextV);
-       mTextV.setText(cat[position]);
+       mTextV.setText(style[position]);
 // perform on Click Event Listener on CheckedTextView
       mTextV.setOnClickListener(new View.OnClickListener() {
             @Override
