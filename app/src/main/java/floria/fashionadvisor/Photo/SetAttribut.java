@@ -47,6 +47,9 @@ private String DBCat;
 private String DBSchnitt;
 private String DBFarbe;
 private String DBStyle;
+private Boolean DBallePara=true;
+private TextCheked adapter;
+private String DBToast;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -85,7 +88,7 @@ private String DBStyle;
        // Diese wird genommen und als String Tabelle gespeichert
        String[] styleList= getResources().getStringArray(R.array.style_array);
        //TextCheked ist eine Java Classe die extends BaseAdaptater
-        TextCheked adapter = new TextCheked(this,styleList);
+         adapter = new TextCheked(this,styleList);
         //Style ist die Gridview
         style.setAdapter(adapter);
 
@@ -156,37 +159,51 @@ private String DBStyle;
     }
 
 private void saveInDB(){
-    String farbe="none";
+
     saveAll.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
- werteInDB();
-
+            DBallePara=true;
+            werteInDB();
+            if (DBallePara==false){
+                Toast.makeText(getApplicationContext(), DBToast+" wählen", Toast.LENGTH_LONG).show();
+            }
+            else {
+                Toast.makeText(getApplicationContext(), "Foto gespeichert", Toast.LENGTH_LONG).show();
+            }
         }
     });
+
+
+
 }
 
 private void werteInDB(){
+    DBToast="";
+    if (mTopCat.getIndex()==2||mTopCat.getIndex()==1){
+        DBCat = mTopCat.getCategorie();
+        if (DBCat.equals("- - - - -")) {
+            DBallePara=false;
+            DBToast=" Kategorie";
+            //Toast.makeText(getApplicationContext(), "Kategorie wählen", Toast.LENGTH_LONG).show();
+        }
 
-    if (mTopCat.getIndex()==2){
-        DBTopcat="Oberteil";
-    }
-    else if (mTopCat.getIndex()==1){
-        DBTopcat="Unterteil";
+        switch (mTopCat.getIndex()){
+            case 1 :
+                DBTopcat="Unterteil";
+                break;
+            case 2:
+                DBTopcat="Oberteil";
+                break;
+        }
+
     }
     else {
-        Toast.makeText(getApplicationContext(), "Kategorie wählen", Toast.LENGTH_LONG).show();
+        DBallePara=false;
+       // Toast.makeText(getApplicationContext(), "Kategorie wählen", Toast.LENGTH_LONG).show();
+        DBToast=" Kategorie";
     }
 
-    DBCat = mTopCat.getCategorie();
-    if (DBCat!="- - - - -") {
-        //DBCat = mTopCat.getCategorie();
-        Toast.makeText(getApplicationContext(), DBCat, Toast.LENGTH_LONG).show();
-    }
-    else if(DBCat.contentEquals("- - - - -")) {
-        Toast.makeText(getApplicationContext(), "Kategorie wählen", Toast.LENGTH_LONG).show();
-    }
     if (kurz.isChecked()){
         DBSchnitt="kurz";
     }
@@ -194,8 +211,11 @@ private void werteInDB(){
         DBSchnitt="lang";
     }
     if (goodcolor.isChecked()){
-        if (detectedColor=="unbekannt"){
-            Toast.makeText(getApplicationContext(), "Farbe wählen", Toast.LENGTH_LONG).show();
+        if (detectedColor.equals("unbekannt")){
+            DBallePara=false;
+            if (DBToast.equals("")){ DBToast=" Farbe";}
+            else {DBToast=DBToast+" und Farbe";}
+           // Toast.makeText(getApplicationContext(), "Farbe wählen", Toast.LENGTH_LONG).show();
         }
         else {
             DBFarbe = detectedColor;
@@ -204,12 +224,25 @@ private void werteInDB(){
     }
 
     else if (falsecolor.isChecked()){
-
         DBFarbe = mSpinner.getSelectedItem().toString();
-        // Toast.makeText(getApplicationContext(), farbe, Toast.LENGTH_LONG).show();
+        if (DBFarbe.equals("- - - - -")){
+            DBallePara=false;
+            if (DBToast.equals("")){ DBToast=" Farbe";}
+            else {DBToast=DBToast+" und Farbe";}
+            //Toast.makeText(getApplicationContext(), "Farbe wählen", Toast.LENGTH_LONG).show();
+        }
+
     }
 
-
+    adapter.setDBtotalliste("");
+    DBStyle=adapter.getDBtotalliste();
+    if (DBStyle.equals("00000")){
+        DBallePara=false;
+        if (DBToast.equals("")){ DBToast=" Style";}
+        else {DBToast=DBToast+" und Style";}
+        //Toast.makeText(getApplicationContext(), "Style wählen", Toast.LENGTH_LONG).show();
+    }
+   // Toast.makeText(getApplicationContext(), DBStyle, Toast.LENGTH_LONG).show();
 
 
 }

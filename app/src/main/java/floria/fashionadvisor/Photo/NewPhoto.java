@@ -84,7 +84,7 @@ public class NewPhoto extends AppCompatActivity {
                        detectedColor=colo;
                        Toast.makeText(getApplicationContext(), "R:"+red+" G:"+green+" B:"+blue,
                                Toast.LENGTH_LONG).show();
-                       Toast.makeText(getApplicationContext(), colo,Toast.LENGTH_LONG).show();
+
                        mCamera.takePicture(null, null, jpegCallback);
                        break;
                    case MotionEvent.ACTION_UP:

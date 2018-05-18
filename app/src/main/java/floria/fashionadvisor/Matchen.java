@@ -41,8 +41,8 @@ private  Button btnNxtU;
         setSupportActionBar(toolbar);
         btnPrw = (Button) findViewById(R.id.button);
         btnNxt = (Button) findViewById(R.id.buttonNxt);
-        btnPrwU = (Button) findViewById(R.id.button);
-        btnNxtU = (Button) findViewById(R.id.buttonNxt);
+        btnPrwU = (Button) findViewById(R.id.buttonPrwUnten);
+        btnNxtU = (Button) findViewById(R.id.buttonNxtUnten);
 
         ImageSwitcher myImageSwitcher = (ImageSwitcher) findViewById(R.id.switchOben);
         myImageSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
@@ -90,8 +90,8 @@ private  Button btnNxtU;
 
     private void obenSwitch(){
 
-        btnPrw.setOnClickListener(new View.OnClickListener() {
-
+        btnPrw.setOnClickListener (new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 currentIndex--;
@@ -103,7 +103,7 @@ private  Button btnNxtU;
         });
 
         btnNxt.setOnClickListener(new View.OnClickListener() {
-
+            @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 currentIndex++;
@@ -118,7 +118,7 @@ private  Button btnNxtU;
     private void untenSwitch(){
 
         btnPrwU.setOnClickListener(new View.OnClickListener() {
-
+            @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 currentIndex--;
@@ -130,7 +130,7 @@ private  Button btnNxtU;
         });
 
         btnNxtU.setOnClickListener(new View.OnClickListener() {
-
+            @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 currentIndex++;
