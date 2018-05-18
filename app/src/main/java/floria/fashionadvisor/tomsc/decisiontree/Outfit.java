@@ -17,7 +17,7 @@ public class Outfit {
 
 
 
-    public Outfit(String[] style)
+    public Outfit(String style)
     {
         //ClothingAttributes attributes = new ClothingAttributes(color);          //add Arraylist to attributes
 

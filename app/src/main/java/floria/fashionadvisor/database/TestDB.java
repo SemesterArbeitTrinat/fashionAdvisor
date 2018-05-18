@@ -57,7 +57,7 @@ public class TestDB extends AppCompatActivity {
 
   private void getUpperPart()
   {
-    String[] style = {"sport", "abend"};
+    String style = "sport";
     ClothingPartList upperPart = new ClothingPartList(style);
   }
 
