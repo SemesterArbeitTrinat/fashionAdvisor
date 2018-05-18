@@ -8,11 +8,12 @@ import android.view.View;
 import android.widget.Button;
 
 import floria.fashionadvisor.Photo.NewPhoto;
+import floria.fashionadvisor.database.TestDB;
 
 public class MainActivity extends AppCompatActivity {
 
     // Neue Objekte "Button"
-    private Button galerie,matchen,neuphoto;
+    private Button galerie,matchen,neuphoto, testdb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         galerie = (Button) findViewById(R.id.galerie);
         matchen = (Button) findViewById(R.id.matchen);
         neuphoto = (Button) findViewById(R.id.neuphoto);
+        testdb = (Button) findViewById(R.id.testdb);
 
         //Listener für den Button Galerie. Diese ruft ein neue Aktivität.
         galerie.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +62,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(callNeuAufnehmen);
             }
         });
+
+
+
+        testdb.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                Intent callTestDB = new Intent(MainActivity.this, TestDB.class);
+                startActivity(callTestDB);
+            } });
     }
 
 

@@ -10,8 +10,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="300dp"
+        android:layout_height="286dp"
+        android:layout_marginTop="200dp"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp">
@@ -38,6 +38,14 @@
             android:layout_height="64dp"
             android:layout_gravity="center_horizontal"
             android:text="Neu aufnehemen" />
+
+        <Button
+            android:id="@+id/testdb"
+            android:layout_width="160dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal|center"
+            android:text="TestDB" />
 
 
     </LinearLayout>
