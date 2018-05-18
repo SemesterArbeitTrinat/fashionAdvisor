@@ -17,20 +17,37 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.GridView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import floria.fashionadvisor.R;
 
+import static floria.fashionadvisor.Photo.NewPhoto.detectedColor;
+
 /**
- * Created by flori on 08/04/2018.
+ * Created by floria on 08/04/2018.
  */
 
 public class SetAttribut extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
 
+private  Spinner mSpinner;
+private TopCat mTopCat = new TopCat() ;
 private Button top;
 private Button down;
+private Button saveAll;
+private RadioButton goodcolor;
+private RadioButton falsecolor;
+private RadioButton kurz;
+private RadioButton lang;
+private String DBTopcat;
+private String DBCat;
+private String DBSchnitt;
+private String DBFarbe;
+private String DBStyle;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,37 +58,51 @@ private Button down;
 
         top = (Button) findViewById(R.id.OT);
         down = (Button) findViewById(R.id.UT);
-
+        saveAll = (Button) findViewById(R.id.save);
 
         FrameLayout mFrame= findViewById(R.id.photo_view);
         RadioGroup cut= findViewById(R.id.radioGroup);
+        RadioGroup farbe= findViewById(R.id.radioGroupColor);
+        goodcolor= (RadioButton) findViewById(R.id.goodColor);
+        falsecolor= (RadioButton) findViewById(R.id.falseColor);
+        kurz= (RadioButton) findViewById(R.id.Kurz);
+        lang= (RadioButton) findViewById(R.id.Lang);
         GridView style = (GridView) findViewById(R.id.test);
 
-        Spinner spinner = (Spinner) findViewById(R.id.farbe);
-        spinner.setOnItemSelectedListener(this);
+        mSpinner = (Spinner) findViewById(R.id.farbe);
+
+        mSpinner.setOnItemSelectedListener(this);
+
+
 
         chooseTopCat();
-        chooseColor(spinner);
+        chooseColor();
+        saveInDB();
+        // Create an ArrayAdapter using the string array and a default spinner layout
 
+
+       //Style_array ist die Liste mit allem Stylen.
+       // Diese wird genommen und als String Tabelle gespeichert
        String[] styleList= getResources().getStringArray(R.array.style_array);
-// Create an ArrayAdapter using the string array and a default spinner layout
-
+       //TextCheked ist eine Java Classe die extends BaseAdaptater
         TextCheked adapter = new TextCheked(this,styleList);
+        //Style ist die Gridview
         style.setAdapter(adapter);
 
     }
 
 
     private void chooseTopCat(){
+
         top.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                TopCat mTopCat = new TopCat() ;
-                mTopCat.setIndex(1);
+                int bColor= top.getDrawingCacheBackgroundColor();
+                mTopCat = new TopCat() ;
+                mTopCat.setIndex(2);
                 loadFragment(mTopCat);
-                top.setBackgroundColor(Color.DKGRAY);
-                down.setBackgroundColor(Color.TRANSPARENT);
+                top.setBackgroundColor(Color.GRAY);
+                down.setBackgroundColor(bColor);
 
             }
         });
@@ -79,11 +110,12 @@ private Button down;
         down.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TopCat mTopCat = new TopCat() ;
-                mTopCat.setIndex(2);
+                int bColor= down.getDrawingCacheBackgroundColor();
+                mTopCat = new TopCat() ;
+                mTopCat.setIndex(1);
                 loadFragment(mTopCat);
-                down.setBackgroundColor(Color.DKGRAY);
-                top.setBackgroundColor(Color.TRANSPARENT);
+                down.setBackgroundColor(Color.GRAY);
+                top.setBackgroundColor(bColor);
             }
         });
 
@@ -100,14 +132,16 @@ private Button down;
         fragmentTransaction.commit(); // save the changes
     }
 
-   private void chooseColor(Spinner spinner){
+   private void chooseColor(){
 
-       ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-               R.array.color_array, android.R.layout.simple_spinner_item);
+        goodcolor.setText(detectedColor);
+
+    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                    R.array.color_array, android.R.layout.simple_spinner_item);
 // Specify the layout to use when the list of choices appears
-       adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 // Apply the adapter to the spinner
-       spinner.setAdapter(adapter);
+       mSpinner.setAdapter(adapter);
 
    }
 
@@ -121,6 +155,64 @@ private Button down;
     public void onNothingSelected(AdapterView<?> arg0) {
     }
 
+private void saveInDB(){
+    String farbe="none";
+    saveAll.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+ werteInDB();
+
+        }
+    });
+}
+
+private void werteInDB(){
+
+    if (mTopCat.getIndex()==2){
+        DBTopcat="Oberteil";
+    }
+    else if (mTopCat.getIndex()==1){
+        DBTopcat="Unterteil";
+    }
+    else {
+        Toast.makeText(getApplicationContext(), "Kategorie wählen", Toast.LENGTH_LONG).show();
+    }
+
+    DBCat = mTopCat.getCategorie();
+    if (DBCat!="- - - - -") {
+        //DBCat = mTopCat.getCategorie();
+        Toast.makeText(getApplicationContext(), DBCat, Toast.LENGTH_LONG).show();
+    }
+    else if(DBCat.contentEquals("- - - - -")) {
+        Toast.makeText(getApplicationContext(), "Kategorie wählen", Toast.LENGTH_LONG).show();
+    }
+    if (kurz.isChecked()){
+        DBSchnitt="kurz";
+    }
+    else if (lang.isChecked()){
+        DBSchnitt="lang";
+    }
+    if (goodcolor.isChecked()){
+        if (detectedColor=="unbekannt"){
+            Toast.makeText(getApplicationContext(), "Farbe wählen", Toast.LENGTH_LONG).show();
+        }
+        else {
+            DBFarbe = detectedColor;
+        }
+        //Toast.makeText(getApplicationContext(), farbe, Toast.LENGTH_LONG).show();
+    }
+
+    else if (falsecolor.isChecked()){
+
+        DBFarbe = mSpinner.getSelectedItem().toString();
+        // Toast.makeText(getApplicationContext(), farbe, Toast.LENGTH_LONG).show();
+    }
+
+
+
+
+}
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //ajoute les entrées de menu_test à l'ActionBar

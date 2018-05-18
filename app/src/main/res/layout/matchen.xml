@@ -1,13 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Matchen" >
+    tools:context=".Matchen">
 
-    <include layout="@layout/menu_bar"></include>
+    <include
+        android:id="@+id/include3"
+        layout="@layout/menu_bar"></include>
 
+    <ImageSwitcher
+        android:id="@+id/switchOben"
+        android:layout_width="209dp"
+        android:layout_height="201dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="70dp"
+        android:foregroundGravity="center_horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/buttonNxt"
+        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/include3">
+
+    </ImageSwitcher>
+
+    <Button
+        android:id="@+id/buttonNxt"
+        android:layout_width="46dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="136dp"
+        android:background="@android:drawable/arrow_down_float"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include3"
+        tools:rotation="-90" />
+
+    <ImageSwitcher
+        android:id="@+id/switchUnten"
+        android:layout_width="209dp"
+        android:layout_height="201dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonNxtUnten"
+        app:layout_constraintStart_toEndOf="@+id/buttonPrwUnten"
+        app:layout_constraintTop_toBottomOf="@+id/switchOben">
+
+    </ImageSwitcher>
+
+    <Button
+        android:id="@+id/buttonPrwUnten"
+        android:layout_width="40dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="170dp"
+        android:background="@android:drawable/arrow_down_float"
+        app:layout_constraintEnd_toStartOf="@+id/switchUnten"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        tools:rotation="90" />
+
+    <Button
+        android:id="@+id/buttonNxtUnten"
+        android:layout_width="46dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="170dp"
+        android:background="@android:drawable/arrow_down_float"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonNxt"
+        tools:rotation="-90" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="40dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="136dp"
+        android:background="@android:drawable/arrow_down_float"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include3"
+        tools:rotation="90" />
 
 
 </android.support.constraint.ConstraintLayout>

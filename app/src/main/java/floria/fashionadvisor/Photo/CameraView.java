@@ -155,9 +155,9 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback, C
         green = 0;
         blue = 0;
 
-        for (int ii = -2; ii < 3; ii++) {
-            for (int jj = -2; jj < 3; jj++) {
-                int pixel = mBmp.getPixel(X - ii, Y - jj);
+        for (int ii = -5; ii < 5; ii++) {
+            for (int jj = -5; jj < 5; jj++) {
+                int pixel = mBmp.getPixel(X + ii, Y + jj);
                 red = red + Color.red(pixel);
                 green = green + Color.green(pixel);
                 blue = blue + Color.blue(pixel);
@@ -165,9 +165,9 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback, C
             }
         }
 
-        red = red / 25;
-        green = green / 25;
-        blue = blue / 25;
+        red = red / 100;
+        green = green / 100;
+        blue = blue / 100;
 
 
     }

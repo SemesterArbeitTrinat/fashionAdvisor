@@ -11,184 +11,251 @@
         layout="@layout/menu_bar"></include>
 
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="70dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="vertical"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="80dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.416"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
 
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="119dp">
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="119dp">
 
-            <Button
-                android:id="@+id/OT"
-                android:layout_width="101dp"
-                android:layout_height="47dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginTop="8dp"
-                android:background="@color/colorBack"
-                android:text="Oberteil"
-                app:layout_constraintEnd_toStartOf="@+id/UT"
-                app:layout_constraintTop_toTopOf="parent" />
+                <Button
+                    android:id="@+id/OT"
+                    android:layout_width="101dp"
+                    android:layout_height="47dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/colorBack"
+                    android:text="Oberteil"
+                    app:layout_constraintEnd_toStartOf="@+id/UT"
+                    app:layout_constraintStart_toEndOf="@+id/Stil"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
-                android:id="@+id/UT"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                android:background="@color/colorBack"
-                android:text="Unterteil"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/OT" />
+                <Button
+                    android:id="@+id/UT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:background="@color/colorBack"
+                    android:text="Unterteil"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/OT" />
 
-            <FrameLayout
-                android:id="@+id/frameLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="45dp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/OT">
+                <FrameLayout
+                    android:id="@+id/frameLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/OT">
 
-            </FrameLayout>
+                </FrameLayout>
 
-            <TextView
-                android:id="@+id/Stil"
-                android:layout_width="wrap_content"
-                android:layout_height="41dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Kategorie:"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="24sp"
+                <TextView
+                    android:id="@+id/Stil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="41dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Kategorie:"
+                    android:textColor="@color/colorPrimaryDark"
 
-                app:layout_constraintEnd_toStartOf="@+id/OT"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-        </android.support.constraint.ConstraintLayout>
-
-
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="0dp"
-                android:layout_height="37dp"
-                android:layout_marginStart="8dp"
-                android:text="Farbe:"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toStartOf="@+id/farbe"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/farbe" />
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
-            <Spinner
-                android:id="@+id/farbe"
-                android:layout_width="182dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:background="@color/colorBack"
-                android:isScrollContainer="true"
-                app:layout_constraintEnd_toEndOf="parent" />
+            </android.support.constraint.ConstraintLayout>
 
 
-        </android.support.constraint.ConstraintLayout>
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="118dp">
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="77dp"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="8dp"
+                    android:text="Farbe:"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/radioGroupColor" />
 
-            <TextView
-                android:id="@+id/Schnitt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Schnitt:"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="24sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <RadioGroup
+                    android:id="@+id/radioGroupColor"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toEndOf="@+id/textView1"
+                    app:layout_constraintTop_toTopOf="parent">
 
-            <RadioGroup
-                android:id="@+id/radioGroup"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/Schnitt"
-                app:layout_constraintTop_toTopOf="parent">
+                    <RadioButton
+                        android:id="@+id/goodColor"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:checked="true"
+                        android:text="Kurz"
+                        android:textColorLink="@color/colorBack"
+                        android:textSize="16sp" />
 
-                <RadioButton
-                    android:id="@+id/Kurz"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:checked="true"
-                    android:text="Kurz"
-                    android:textColorLink="@color/colorBack"
-                    android:textSize="16sp" />
-
-                <RadioButton
-                    android:id="@+id/Lang"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:checked="false"
-                    android:text="Lang"
-                    android:textColorLink="@color/colorBack"
-                    android:textSize="16sp" />
+                    <RadioButton
+                        android:id="@+id/falseColor"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:checked="false"
+                        android:text="Andere Farbe :"
+                        android:textColorLink="@color/colorBack"
+                        android:textSize="16sp" />
 
 
-            </RadioGroup>
+                </RadioGroup>
 
 
-        </android.support.constraint.ConstraintLayout>
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                <Spinner
+                    android:id="@+id/farbe"
+                    android:layout_width="0dp"
+                    android:layout_height="36dp"
+                    android:isScrollContainer="true"
+                    app:layout_constraintBottom_toBottomOf="@+id/radioGroupColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/radioGroupColor" />
 
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Style:"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toStartOf="@+id/test"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/test" />
+            </android.support.constraint.ConstraintLayout>
 
-            <GridView
-                android:id="@+id/test"
-                android:layout_width="230dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="4dp"
-                android:layout_marginTop="8dp"
-                android:background="@color/colorBack"
-                android:gravity="right"
-                android:numColumns="3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="118dp">
+
+                <TextView
+                    android:id="@+id/Schnitt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Schnitt:"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/Schnitt"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <RadioButton
+                        android:id="@+id/Kurz"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:checked="true"
+                        android:text="Kurz"
+                        android:textColorLink="@color/colorBack"
+                        android:textSize="16sp" />
+
+                    <RadioButton
+                        android:id="@+id/Lang"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:checked="false"
+                        android:text="Lang"
+                        android:textColorLink="@color/colorBack"
+                        android:textSize="16sp" />
 
 
-        </android.support.constraint.ConstraintLayout>
-    </LinearLayout>
+                </RadioGroup>
 
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginStart="8dp"
+                    android:text="Style:"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toStartOf="@+id/test"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/test" />
+
+                <GridView
+                    android:id="@+id/test"
+                    android:layout_width="234dp"
+                    android:layout_height="76dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/colorBack"
+                    android:gravity="right"
+                    android:numColumns="3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="64dp">
+
+                <Button
+                    android:id="@+id/save"
+                    android:layout_width="184dp"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Speichern"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </android.support.constraint.ConstraintLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
 </android.support.constraint.ConstraintLayout>

@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">FashionAdvisor</string>
     <string name="farbTittle">Farbe</string>
+    <string name="rot">rot</string>
+    <string name="nicht">nicht</string>
+
 
     <string-array name="color_array">
         <item>- - - - -</item>

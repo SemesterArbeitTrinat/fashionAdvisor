@@ -11,10 +11,12 @@ import floria.fashionadvisor.Photo.NewPhoto;
 
 public class MainActivity extends AppCompatActivity {
 
+    // Neue Objekte "Button"
     private Button galerie,matchen,neuphoto;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //SetcontentView ist benutzt um die Ressourcen zu zeigen
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -29,13 +31,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void allActivty(){
+
+        // Die drei Ressourcen werden als Objekt gespeichert
         galerie = (Button) findViewById(R.id.galerie);
         matchen = (Button) findViewById(R.id.matchen);
         neuphoto = (Button) findViewById(R.id.neuphoto);
 
+        //Listener für den Button Galerie. Diese ruft ein neue Aktivität.
         galerie.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
                 Intent callGalerie = new Intent(MainActivity.this, Galerie.class);
                 startActivity(callGalerie);
             }

@@ -20,6 +20,7 @@ public class TopCat extends Fragment implements AdapterView.OnItemSelectedListen
 
 
     private int index=1;
+    private String categorie;
     private ArrayAdapter<CharSequence> adapter;
 
     public void setIndex(int index) {
@@ -27,6 +28,10 @@ public class TopCat extends Fragment implements AdapterView.OnItemSelectedListen
     }
     private  View view;
 
+
+    public String getCategorie() {
+        return categorie;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -39,9 +44,14 @@ public class TopCat extends Fragment implements AdapterView.OnItemSelectedListen
         switch (index){
             case 1 :
                 adapter = ArrayAdapter.createFromResource(getActivity(),R.array.down_cat, android.R.layout.simple_spinner_item);
+
+                //categorie=adapter.toString();
                 break;
             case 2 :
                 adapter = ArrayAdapter.createFromResource(getActivity(),R.array.top_cat, android.R.layout.simple_spinner_item);
+
+                //categorie=adapter.toString();
+
                 break;
 
             default:
@@ -49,17 +59,26 @@ public class TopCat extends Fragment implements AdapterView.OnItemSelectedListen
                 break;
 
         }
+        //categorie= spinner.getSelectedItem().toString();
+
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
 
+
         return view;
+    }
+
+    public int getIndex() {
+        return index;
     }
 
     //Performing action onItemSelected and onNothing selected
     @Override
     public void onItemSelected(AdapterView<?> parent, View v, int pos, long id) {
+        categorie=adapter.getItem(pos).toString();
+
         // Toast.makeText(getApplicationContext(), pos, Toast.LENGTH_LONG).show();
     }
 
