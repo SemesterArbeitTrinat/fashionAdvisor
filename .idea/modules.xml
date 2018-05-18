@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/A.I-fashionAdvisor.iml" filepath="$PROJECT_DIR$/A.I-fashionAdvisor.iml" />
+      <module fileurl="file://C:\Users\Seehund\AndroidStudioProjects\fashionAdvisor\A.I-fashionAdvisor.iml" filepath="C:\Users\Seehund\AndroidStudioProjects\fashionAdvisor\A.I-fashionAdvisor.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\Seehund\AndroidStudioProjects\fashionAdvisor\app\app.iml" filepath="C:\Users\Seehund\AndroidStudioProjects\fashionAdvisor\app\app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/fashionAdvisor.iml" filepath="$PROJECT_DIR$/.idea/fashionAdvisor.iml" />
     </modules>
   </component>
 </project>
