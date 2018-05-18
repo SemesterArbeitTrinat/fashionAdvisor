@@ -1,6 +1,7 @@
 package floria.fashionadvisor.tomsc.decisiontree;
 
 import android.net.Uri;
+import android.graphics.Bitmap;
 
 /**
  * Created by tomsc on 10.05.2018.
@@ -10,8 +11,8 @@ public class Item implements Comparable<Item> {
 
     private String name, cut, topcategory;
     private String color;
-    private String[] style = new String[5] ;
-    private Uri image_path;
+    private String[] style = {"","","","",""};
+    private Bitmap bitmap;
     private int rank, randomizedRank, id, favourite;
 
 
@@ -25,11 +26,11 @@ public class Item implements Comparable<Item> {
         this.rank = 0;
         this.randomizedRank = 0;
         this.id = 0;
-        this.image_path = null;
+        this.bitmap = null;
 
     }
 
-    public Item(String name, String cut, String topcategory, String color, String[] style, Uri image_path, int rank, int id, int favourite) {
+    public Item(String name, String cut, String topcategory, String color, String[] style, Bitmap bitmap, int rank, int id, int favourite) {
         this.topcategory = topcategory;
         this.cut = cut;
         this.name = name;
@@ -39,7 +40,7 @@ public class Item implements Comparable<Item> {
         this.rank = rank;
         this.randomizedRank = 0;
         this.id = id;
-        this.image_path = image_path;
+        this.bitmap = bitmap;
     }
 
     public String getName() {
@@ -82,12 +83,12 @@ public class Item implements Comparable<Item> {
         this.style = style;
     }
 
-    public Uri getImage_path() {
-        return image_path;
+    public Bitmap getBitmaph() {
+        return bitmap;
     }
 
-    public void setImage_path(Uri image_path) {
-        this.image_path = image_path;
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
     }
 
     public int getRank() {

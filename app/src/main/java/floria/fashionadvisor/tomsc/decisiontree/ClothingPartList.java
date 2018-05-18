@@ -4,6 +4,8 @@ package floria.fashionadvisor.tomsc.decisiontree;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 import floria.fashionadvisor.database.*;
 
@@ -13,6 +15,7 @@ import java.util.List;
 
 import static floria.fashionadvisor.database.DBDataSource.database;
 import static floria.fashionadvisor.tomsc.decisiontree.ChooseProbability.sortMaxMin;
+import floria.fashionadvisor.byteArrayPhoto.SavePhotoTask;
 
 /**
  * Created by tomsc on 10.05.2018.
@@ -58,9 +61,9 @@ public class ClothingPartList {
 
         while (!cursor.isAfterLast()) {
             int id, rank, favourite;
-            String cut, name, color, category, style_fromDB_String;
+            String cut, name, color, category, style_fromDB_String, image_path;
             String[] style_fromDB_Array;
-            byte image;
+            byte[] image;
 
             id = cursor.getInt(cursor.getColumnIndex(DBOpenHelper._ID));
             rank = cursor.getInt(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_RANK));
@@ -70,13 +73,15 @@ public class ClothingPartList {
             color = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_FARBE));
             category = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_KATEGORIE));
             style_fromDB_String = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_STIL));
-            //image = cursor.getBlob(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_FOTO));
+            image = cursor.getBlob(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_FOTO));
 
             style_fromDB_Array = style_fromDB_String.split("\\|");
 
+            Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
 
-            //Item(String name, String cut, String topcategory, String color, String[] style, Uri image_path, int rank, int id, int favourite
-            Item item = new Item(name, cut, category, color, style_fromDB_Array, null, rank, id, favourite);
+
+            //Item(String name, String cut, String topcategory, String color, String[] style, Bitmap bitmap, int rank, int id, int favourite
+            Item item = new Item(name, cut, category, color, style_fromDB_Array, bitmap, rank, id, favourite);
             unrandomizedList.add(item);
             cursor.moveToNext();
         }
