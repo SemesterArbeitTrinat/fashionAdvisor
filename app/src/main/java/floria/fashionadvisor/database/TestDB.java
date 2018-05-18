@@ -4,26 +4,22 @@ package floria.fashionadvisor.database;
  * Created by Seehund on 04.05.2018.
  *
  * */
-
-import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
-import java.util.ArrayList;
 import java.util.List;
-
+import floria.fashionadvisor.database.DB;
+import floria.fashionadvisor.database.DBDataSource;
 import floria.fashionadvisor.MainActivity;
 import floria.fashionadvisor.R;
-import floria.fashionadvisor.tomsc.decisiontree.ClothingAttributes;
-import floria.fashionadvisor.tomsc.decisiontree.ClothingPartList;
 
-
-public class TestDB extends AppCompatActivity {
+public class TestDB extends AppCompatActivity{
 
   public static final String LOG_TAG = MainActivity.class.getSimpleName();
 
@@ -31,7 +27,6 @@ public class TestDB extends AppCompatActivity {
   public ListView mDBListView;
 
   protected void onCreate(@Nullable Bundle savedInstanceState) {
-
     super.onCreate(savedInstanceState);
     //setContentView(R.layout.testdb);
 
@@ -48,22 +43,12 @@ public class TestDB extends AppCompatActivity {
     dataSource.open();
 
 
-    dataSource.addDB(1, 1, 1, 1, 1, 1, 1, "1");
-    dataSource.addDB(2, 2, 2, 2, 2, 2, 2, "2");
-    dataSource.addinTAB_Farbe("BLAU");
-    dataSource.addinTAB_Farbe("Pink");
+    dataSource.addDB("Freizeit","T-Shirt","DUNKELPINK","KURZ",10,1,200,"1");
+    dataSource.addDB("Sport","Jogging","HELLPINK","LANG",2,1,2,"2");
+    dataSource.addDB("Sommer","Top","MITTELPINK","KURZ",1,0,1,"5");
+
 
   }
-
-  private void getUpperPart()
-  {
-    String style = "sport";
-    ClothingPartList upperPart = new ClothingPartList(style);
-  }
-
-
-
-
   @Override
   protected void onResume(){
     super.onResume();
@@ -73,9 +58,6 @@ public class TestDB extends AppCompatActivity {
     Log.d(LOG_TAG, "Folgende EintrrÃ¤ge sind in der Datenbank:");
     // hm
     showAllListEntries();
-
-    Log.d(LOG_TAG, "upperPart besteht aus:");
-    getUpperPart();
 
   }
 
@@ -88,8 +70,9 @@ public class TestDB extends AppCompatActivity {
   }
 
   private void showAllListEntries () {
+
     List<DB> DBList = dataSource.getAllDB();
-    List FarbeList=dataSource.getAllFarbe();
+
 
    /* ArrayAdapter<DB> adapter = (ArrayAdapter<DB>) mDBListView.getAdapter();
 

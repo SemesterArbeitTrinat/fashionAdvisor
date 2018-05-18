@@ -5,18 +5,18 @@ package floria.fashionadvisor.database;
  */
 
 public class DB {
-    private int id;
-    private int Stil;
-    private int Bezeichnung;
-    private int Farbe;
-    private int Schnitt;
+    private static int id;
+    private String Stil;
+    private String Bezeichnung;
+    private static String Farbe;
+    private String Schnitt;
     private int Rank;
     private int Favorit;
     private int Haeufigkeit;
     private String Photo;
 
 
-   public DB (int id, int Stil, int Bezeichnung, int Farbe, int Schnitt, int Rank, int Favorit, int Haeufigkeit, String Photo){
+   public DB (int id, String Stil, String Bezeichnung, String Farbe, String Schnitt, int Rank, int Favorit, int Haeufigkeit, String Photo){
        this.id = id;
        this.Stil = Stil;
        this.Bezeichnung = Bezeichnung;
@@ -30,10 +30,7 @@ public class DB {
    }
 
 
-
-
-
-    public long getId() {
+    public static long getId() {
         return id;
     }
 
@@ -41,9 +38,11 @@ public class DB {
         this.id = id;
     }
 
+
+
     @Override
     public String toString (){
-       String output = "Bezeichnung: "+Bezeichnung + " Farbe:  "+ Farbe;
+       String output = "Bezeichnung: "+Bezeichnung + " Farbe:  "+ Farbe+ " Stil "+Stil;
        return output;
     }
 

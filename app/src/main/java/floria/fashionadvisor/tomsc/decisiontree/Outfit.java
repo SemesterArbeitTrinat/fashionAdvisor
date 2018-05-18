@@ -23,7 +23,7 @@ public class Outfit {
 
         this.lowerPartQueue = new ClothingPartList(style);                  //get a lowerPartQueue with DecisionTreeLowerPart
         this.lowerPart = lowerPartQueue.getClothingPartList().get(0);                                             // put first item of lowerPartQueue as lowerPart
-        this.upperPartQueue = new ClothingPartList(lowerPart);
+        this.upperPartQueue = new ClothingPartList(style);
         this.upperPart = upperPartQueue.getClothingPartList().get(0);
 
 

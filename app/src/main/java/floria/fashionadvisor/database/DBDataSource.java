@@ -4,12 +4,12 @@ package floria.fashionadvisor.database;
  * Created by Seehund on 24.04.2018.
  */
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import android.content.ContentValues;
+import android.database.Cursor;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,35 +34,7 @@ public class DBDataSource {
 
     };
 
-    //Tabelle Stil
-    private String[] Stil={
-            DBOpenHelper.STIL_ID,
-            DBOpenHelper.STIL_STIL
-    };
 
-    //Tabelle Bezeichnung
-    private String[] Bezeichnung={
-            DBOpenHelper.BEZEICHNUNG_ID,
-            DBOpenHelper.BEZEICHNUNG_BEZEICHNUNG
-    };
-
-    //Tabelle Farbe
-    private String[ ]Farbe={
-            DBOpenHelper.FARBE_ID,
-            DBOpenHelper.FARBE_FARBE
-    };
-
-    //Tabelle Schnitt
-    private String[] Schnitt={
-            DBOpenHelper.SCHNITT_ID,
-            DBOpenHelper.SCHNITT_SCHNITT,
-    };
-
-    //Tabelle Foto
-    private String[] Foto={
-            DBOpenHelper.FOTO_ID,
-            DBOpenHelper.FOTO_FOTO
-    };
 
     public DBDataSource (Context context){
         Log.d(LOG_TAG, "Data Source erzeugt den dbHelper.");
@@ -80,7 +52,7 @@ public class DBDataSource {
     }
 
 
-    public void addDB (int Stil, int Bezeichnung, int Farbe, int Schnitt, int Rank, int Favorit, int Haeufigkeit, String Photo){
+    public void addDB (String Stil, String Bezeichnung, String Farbe, String Schnitt, int Rank, int Favorit, int Haeufigkeit, String Photo){
 
         ContentValues values= new ContentValues();
 
@@ -97,13 +69,7 @@ public class DBDataSource {
 
     }
 
-    public void addinTAB_Farbe(String Farbe){
 
-        ContentValues values =new ContentValues();
-        values.put(DBOpenHelper.FARBE_FARBE, Farbe);
-        database.insert(DBOpenHelper.TABLE_NAME_FARBE,null,values);
-
-    }
 
    /* public DB createDB(int Stil, int Bezeichnung, int Farbe, int Schnitt, int Rank, int Favorit, int Haeufigkeit, String Photo){
 
@@ -139,7 +105,7 @@ public class DBDataSource {
         return cv;
     }
 
-    public DB cursorToDB(Cursor cursor){
+    private DB cursorToDB(Cursor cursor){
         int idIndex =cursor.getColumnIndex(DBOpenHelper._ID);
         int idBezeichnung = cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_BEZEICHNUNG);
         int idFarbe =cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_FARBE);
@@ -153,12 +119,12 @@ public class DBDataSource {
 
 
         int id = cursor.getInt(idIndex);
-        int bezeichnung= cursor.getInt(idBezeichnung);
-        int farbe= cursor.getInt(idFarbe);
+        String bezeichnung= cursor.getString(idBezeichnung);
+        String farbe= cursor.getString(idFarbe);
         int favorit= cursor.getInt(idFavorit);
         String photo= cursor.getString(idPhoto);
-        int stil= cursor.getInt(idStil);
-        int schnitt= cursor.getInt(idSchnitt);
+        String stil= cursor.getString(idStil);
+        String schnitt= cursor.getString(idSchnitt);
         int rank= cursor.getInt(idRank);
         int haeufigkeit=cursor.getInt(idHaeufigkeit);
 
@@ -169,63 +135,37 @@ public class DBDataSource {
 
     }
 
-    public SQLiteDatabase getDatabase() {
-        return database;
-    }
-
-    public FARBE cursortofarbe(Cursor cursor) {
-        int idFarbe_id= cursor.getColumnIndex(DBOpenHelper.FARBE_ID);
-        int idFarbe_Farbe= cursor.getColumnIndex(DBOpenHelper.FARBE_FARBE);
-
-        int farbe_id_=cursor.getInt(idFarbe_id);
-        String farbe_farbe= cursor.getString(idFarbe_Farbe);
-
-        FARBE FARBE= new FARBE(farbe_id_,farbe_farbe);
-
-        return FARBE;
-    }
-
 
 
 
 
     public List<DB> getAllDB(){
         ArrayList<DB> DBList = new ArrayList<DB>();
+        ArrayList FarbeList= new ArrayList();
 
         Cursor cursor= database.query(DBOpenHelper.TABLE_NAME_SAMMLUNG,Sammlung,
                 null,null,null,null,null);
 
 
-
         cursor.moveToFirst();
+
         DB DB;
+
         while (!cursor.isAfterLast()){
             DB = cursorToDB(cursor);
+
             DBList.add(DB);
+
             Log.d(LOG_TAG, "ID: "+DB.getId()+ " gehört zu:  " + DB.toString());
+
+
             cursor.moveToNext();
         }
         cursor.close();
+        //cursor1.close();
         return DBList;
 
     }
-
-    public List getAllFarbe(){
-        ArrayList FarbeList= new ArrayList();
-        Cursor cursor=database.query(DBOpenHelper.TABLE_NAME_FARBE,Farbe, null,null,null,null,null);
-
-        cursor.moveToFirst();
-        FARBE FARBE;
-        while (!cursor.isAfterLast()){
-            FARBE= cursortofarbe(cursor);
-            FarbeList.add(Farbe);
-            Log.d(LOG_TAG, "ID: "+FARBE.getId()+ " gehört zu:  " + FARBE.toStringfarbe());
-            cursor.moveToNext();
-        }
-        cursor.close();
-        return FarbeList;
-    }
-
 
 
 }

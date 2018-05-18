@@ -19,6 +19,58 @@ import static floria.fashionadvisor.tomsc.decisiontree.ChooseProbability.sortMax
 
 public class ClothingPartList {
 
+    /**
+     * Method to get a new List of clothing Items
+     * @param style
+     * @return randomizedList_sorted
+     */
+
+
+    public static List<Item> getClothingPartList (String style)
+    {
+
+        SQLiteDatabase db = database;
+        String table = DBOpenHelper.TABLE_NAME_SAMMLUNG;
+        String[] columns = {DBOpenHelper._ID,                           //Integer
+                            DBOpenHelper.SAMMLUNG_SCHNITT,
+                            DBOpenHelper.SAMMLUNG_BEZEICHNUNG,
+                            DBOpenHelper.SAMMLUNG_FARBE,
+                            DBOpenHelper.SAMMLUNG_KATEGORIE,
+                            DBOpenHelper.SAMMLUNG_STIL,
+                            DBOpenHelper.SAMMLUNG_RANK,                 //Integer
+                            DBOpenHelper.SAMMLUNG_FOTO,                 //BLOB
+                            DBOpenHelper.SAMMLUNG_FAVORIT,              //Integer
+                            };
+        String selection = "";
+        String[] selectionArgs = {""};
+        if (style != "")
+        {
+            selection += DBOpenHelper.SAMMLUNG_STIL + "=?";
+            selectionArgs[0] = style;
+        }
+
+        String groupBy = null;
+        String having = null;
+        String orderBy = null;                                              //"bezeichnung DESC";
+        String limit = null;//"10";
+
+        //Cursor cursor = db.query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit);
+        //String[] columns = {"Farbe"};
+        Cursor cursor = db.query(DBOpenHelper.TABLE_NAME_SAMMLUNG, columns, selection, selectionArgs, having, orderBy, limit);
+
+        cursor.moveToFirst();
+
+
+        List<Item> unrandomizedList = new ArrayList<>();
+        List<Item> randomizedList_sorted = new ArrayList<>();
+
+        randomizedList_sorted = sortMaxMin(unrandomizedList);
+
+        return randomizedList_sorted;
+    }
+
+
+
     private List<Item> clothingPartList;
 
 
@@ -44,7 +96,7 @@ public class ClothingPartList {
         String[] selectionArgs = {""};
         if (style != "")
         {
-            selection += DBOpenHelper.STIL_STIL + "=?";
+            selection += DBOpenHelper.SAMMLUNG_STIL + "=?";
             selectionArgs[0] = style;
         }
 
@@ -140,6 +192,7 @@ public class ClothingPartList {
 
 
     //get all clothing parts with color == blue, style == freizeit, topcategory == lowerPart
+    /*
     public List<Item> getClothingPart(ClothingAttributes clothingAttributes)
     {
 
@@ -202,18 +255,18 @@ public class ClothingPartList {
             image_path = Uri.parse(path);
             ImageIO.write(file, "BMP", new File("filename.bmp"))
 
-            /*
+
             FileOutputStream filecon = new FileOutputStream(file);
             try {
                 sampleResized.compress(Bitmap.CompressFormat.JPEG, 90, filecon);
             } catch (exception e) {
             }
             filecon.close;
-            */
+            /*
 
             rank = cursor.getInt(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_RANK));
 
-            topcategory = cursor.getInt(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_KATEGORIE));
+           topcategory = cursor.getInt(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_KATEGORIE));
             favourite = cursor.getInt(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_FAVORIT));
 
 
@@ -226,7 +279,7 @@ public class ClothingPartList {
 
 
     }
-
+*/
 
 
 

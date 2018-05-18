@@ -3,12 +3,11 @@ package floria.fashionadvisor.database;
 /**
  * Created by Seehund on 14.05.2018.
  */
+import java.io.ByteArrayOutputStream;
 
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
-
-import java.io.ByteArrayOutputStream;
+import android.graphics.Bitmap.CompressFormat;
 
 public class Utilities {
 
