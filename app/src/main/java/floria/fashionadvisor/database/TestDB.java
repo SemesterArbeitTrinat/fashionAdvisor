@@ -43,9 +43,9 @@ public class TestDB extends AppCompatActivity{
     dataSource.open();
 
 
-    dataSource.addDB("Freizeit","T-Shirt","DUNKELPINK","KURZ",10,1,200,"1");
-    dataSource.addDB("Sport","Jogging","HELLPINK","LANG",2,1,2,"2");
-    dataSource.addDB("Sommer","Top","MITTELPINK","KURZ",1,0,1,"5");
+    dataSource.addDB("Freizeit","T-Shirt","DUNKELPINK","KURZ",10,1,200,"1","Oberteil");
+    dataSource.addDB("Sport","Jogging","HELLPINK","LANG",2,1,2,"2", "Unterteil");
+    dataSource.addDB("Sommer","Top","MITTELPINK","KURZ",1,0,1,"5", "Oberteil");
 
 
   }

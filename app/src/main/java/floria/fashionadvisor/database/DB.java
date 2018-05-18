@@ -14,9 +14,10 @@ public class DB {
     private int Favorit;
     private int Haeufigkeit;
     private String Photo;
+    private String Kategorie;
 
 
-   public DB (int id, String Stil, String Bezeichnung, String Farbe, String Schnitt, int Rank, int Favorit, int Haeufigkeit, String Photo){
+   public DB (int id, String Stil, String Bezeichnung, String Farbe, String Schnitt, int Rank, int Favorit, int Haeufigkeit, String Photo, String Kategorie){
        this.id = id;
        this.Stil = Stil;
        this.Bezeichnung = Bezeichnung;
@@ -26,6 +27,7 @@ public class DB {
        this.Favorit=Favorit;
        this.Haeufigkeit=Haeufigkeit;
        this.Photo=Photo;
+       this.Kategorie=Kategorie;
 
    }
 

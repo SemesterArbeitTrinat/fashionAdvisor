@@ -52,7 +52,7 @@ public class DBDataSource {
     }
 
 
-    public void addDB (String Stil, String Bezeichnung, String Farbe, String Schnitt, int Rank, int Favorit, int Haeufigkeit, String Photo){
+    public void addDB (String Stil, String Bezeichnung, String Farbe, String Schnitt, int Rank, int Favorit, int Haeufigkeit, String Photo, String Kategorie){
 
         ContentValues values= new ContentValues();
 
@@ -64,6 +64,7 @@ public class DBDataSource {
         values.put(DBOpenHelper.SAMMLUNG_SCHNITT, Schnitt);
         values.put(DBOpenHelper.SAMMLUNG_RANK, Rank);
         values.put(DBOpenHelper.SAMMLUNG_HAEUFIGKEIT, Haeufigkeit);
+        values.put(DBOpenHelper.SAMMLUNG_KATEGORIE, Kategorie);
 
         database.insert(DBOpenHelper.TABLE_NAME_SAMMLUNG,null,values);
 
@@ -115,6 +116,7 @@ public class DBDataSource {
         int idSchnitt = cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_SCHNITT);
         int idRank= cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_RANK);
         int idHaeufigkeit= cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_HAEUFIGKEIT);
+        int idKAtegorie= cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_KATEGORIE);
 
 
 
@@ -127,9 +129,10 @@ public class DBDataSource {
         String schnitt= cursor.getString(idSchnitt);
         int rank= cursor.getInt(idRank);
         int haeufigkeit=cursor.getInt(idHaeufigkeit);
+        String kategorie=cursor.getString(idKAtegorie);
 
 
-        DB DB = new DB(id,stil, bezeichnung,farbe,schnitt,rank,favorit,haeufigkeit,photo);
+        DB DB = new DB(id,stil, bezeichnung,farbe,schnitt,rank,favorit,haeufigkeit,photo,kategorie);
 
         return DB;
 
