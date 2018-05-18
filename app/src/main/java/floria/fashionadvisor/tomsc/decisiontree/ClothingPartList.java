@@ -3,6 +3,7 @@ package floria.fashionadvisor.tomsc.decisiontree;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 
 import floria.fashionadvisor.database.*;
 
@@ -29,6 +30,9 @@ public class ClothingPartList {
     public static List<Item> getClothingPartList (String style)
     {
 
+
+        List<Item> unrandomizedList = new ArrayList<>();
+
         SQLiteDatabase db = database;
         String table = DBOpenHelper.TABLE_NAME_SAMMLUNG;
         String[] columns = {DBOpenHelper._ID,                           //Integer
@@ -41,27 +45,44 @@ public class ClothingPartList {
                             DBOpenHelper.SAMMLUNG_FOTO,                 //BLOB
                             DBOpenHelper.SAMMLUNG_FAVORIT,              //Integer
                             };
-        String selection = "";
-        String[] selectionArgs = {""};
-        if (style != "")
-        {
-            selection += DBOpenHelper.SAMMLUNG_STIL + "=?";
-            selectionArgs[0] = style;
-        }
+        String selection = DBOpenHelper.SAMMLUNG_STIL + "=?";
+        String[] selectionArgs = {style};
 
         String groupBy = null;
         String having = null;
         String orderBy = null;                                              //"bezeichnung DESC";
         String limit = null;//"10";
 
-        //Cursor cursor = db.query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit);
-        //String[] columns = {"Farbe"};
-        Cursor cursor = db.query(DBOpenHelper.TABLE_NAME_SAMMLUNG, columns, selection, selectionArgs, having, orderBy, limit);
-
+        Cursor cursor = db.query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit);
         cursor.moveToFirst();
 
+        while (!cursor.isAfterLast()) {
+            int id, rank, favourite;
+            String cut, name, color, category, style_fromDB_String;
+            String[] style_fromDB_Array;
+            byte image;
 
-        List<Item> unrandomizedList = new ArrayList<>();
+            id = cursor.getInt(cursor.getColumnIndex(DBOpenHelper._ID));
+            rank = cursor.getInt(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_RANK));
+            favourite = cursor.getInt(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_FAVORIT));
+            cut = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_SCHNITT));
+            name = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_BEZEICHNUNG));
+            color = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_FARBE));
+            category = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_KATEGORIE));
+            style_fromDB_String = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_STIL));
+            //image = cursor.getBlob(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_FOTO));
+
+            style_fromDB_Array = style_fromDB_String.split("\\|");
+
+
+            //Item(String name, String cut, String topcategory, String color, String[] style, Uri image_path, int rank, int id, int favourite
+            Item item = new Item(name, cut, category, color, style_fromDB_Array, null, rank, id, favourite);
+            unrandomizedList.add(item);
+            cursor.moveToNext();
+        }
+
+
+
         List<Item> randomizedList_sorted = new ArrayList<>();
 
         randomizedList_sorted = sortMaxMin(unrandomizedList);
