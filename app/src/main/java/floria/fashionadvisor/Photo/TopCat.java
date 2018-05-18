@@ -19,7 +19,7 @@ import floria.fashionadvisor.R;
 public class TopCat extends Fragment implements AdapterView.OnItemSelectedListener {
 
 
-    private int index=1;
+    private int index=0;
     private String categorie;
     private ArrayAdapter<CharSequence> adapter;
 

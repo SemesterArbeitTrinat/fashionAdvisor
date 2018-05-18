@@ -26,14 +26,14 @@
 
     <Button
         android:id="@+id/buttonNxt"
-        android:layout_width="46dp"
-        android:layout_height="39dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="136dp"
-        android:background="@android:drawable/arrow_down_float"
+        android:background="@android:drawable/ic_media_next"
+        android:backgroundTint="@color/colorBack"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include3"
-        tools:rotation="-90" />
+        app:layout_constraintTop_toBottomOf="@+id/include3" />
 
     <ImageSwitcher
         android:id="@+id/switchUnten"
@@ -50,38 +50,38 @@
 
     <Button
         android:id="@+id/buttonPrwUnten"
-        android:layout_width="40dp"
-        android:layout_height="48dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="170dp"
-        android:background="@android:drawable/arrow_down_float"
+        android:background="@android:drawable/ic_media_previous"
+        android:backgroundTint="@color/colorBack"
         app:layout_constraintEnd_toStartOf="@+id/switchUnten"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        tools:rotation="90" />
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 
     <Button
         android:id="@+id/buttonNxtUnten"
-        android:layout_width="46dp"
-        android:layout_height="39dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="170dp"
-        android:background="@android:drawable/arrow_down_float"
+        android:background="@android:drawable/ic_media_next"
+        android:backgroundTint="@color/colorBack"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonNxt"
-        tools:rotation="-90" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonNxt" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="40dp"
-        android:layout_height="48dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="136dp"
-        android:background="@android:drawable/arrow_down_float"
+        android:background="@android:drawable/ic_media_previous"
+        android:backgroundTint="@color/colorBack"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include3"
-        tools:rotation="90" />
+        app:layout_constraintTop_toBottomOf="@+id/include3" />
 
 
 </android.support.constraint.ConstraintLayout>
