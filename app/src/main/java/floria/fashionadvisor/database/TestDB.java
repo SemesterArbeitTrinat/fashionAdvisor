@@ -67,6 +67,10 @@ public class TestDB extends AppCompatActivity{
 
     Log.d(LOG_TAG, "Die Datenquelle wird geschlossen.");
     dataSource.close();
+
+
+//HALO TEST
+
   }
 
   private void showAllListEntries () {
