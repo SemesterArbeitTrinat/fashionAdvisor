@@ -139,7 +139,7 @@ public class DBDataSource {
         return cv;
     }
 
-    private DB cursorToDB(Cursor cursor){
+    public DB cursorToDB(Cursor cursor){
         int idIndex =cursor.getColumnIndex(DBOpenHelper._ID);
         int idBezeichnung = cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_BEZEICHNUNG);
         int idFarbe =cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_FARBE);
@@ -184,6 +184,9 @@ public class DBDataSource {
 
         return FARBE;
     }
+
+
+
 
 
     public List<DB> getAllDB(){

@@ -1,19 +1,18 @@
 package floria.fashionadvisor.database;
 
-/**
- * Created by Seehund on 24.04.2018.import android.content.ContentValues;
- */
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.nfc.Tag;
 import android.util.Log;
 
 
 public class DBOpenHelper extends SQLiteOpenHelper {
 
     private static final String TAG = DBOpenHelper.class
-    .getSimpleName();
+            .getSimpleName();
 
     //Name und Version der Datenbank
 
@@ -64,6 +63,34 @@ public class DBOpenHelper extends SQLiteOpenHelper {
     public static final String FOTO_ID="FOTO_ID";
     public static final String FOTO_FOTO="FOTO_FOTO";
 
+
+
+    //Tabelle Stil anlegen
+    private static final String TABLE_STIL_CREATE="CREATE TABLE "
+            +TABLE_NAME_STIL+"("+STIL_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "
+            +STIL_STIL+" TEXT NOT NULL);";
+
+    //Tabelle Bezeichnung anlegen
+    private static final String TABLE_BEZEICHNUNG_CREATE="CREATE TABLE "
+            +TABLE_NAME_BEZEICHNUNG+"("+BEZEICHNUNG_ID+ " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            +BEZEICHNUNG_BEZEICHNUNG+" TEXT NOT NULL);";
+
+    //Tabelle Farbe anlegen
+    private static final String TABLE_FARBE_CREATE="CREATE TABLE "
+            +TABLE_NAME_FARBE+"("+FARBE_ID+ " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            +FARBE_FARBE+" TEXT NOT NULL);";
+
+    //Tabelle Foto anlegen
+    private static final String TABLE_FOTO_CREATE="CREATE TABLE "
+            +TABLE_NAME_FOTO+"("+FOTO_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "
+            +FOTO_FOTO+" BLOB);";
+
+    //Tabelle Schnitt anlegen
+    private static final String TABLE_SCHNITT_CREATE="CREATE TABLE "
+            +TABLE_NAME_SCHNITT+"("+SCHNITT_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "
+            +SCHNITT_SCHNITT+" TEXT NOT NULL);";
+
+
     //Tabelle Sammlung anlegen
 
     private static final String TABLE_SAMMLUNG_CREATE="CREATE TABLE "
@@ -76,86 +103,62 @@ public class DBOpenHelper extends SQLiteOpenHelper {
             + SAMMLUNG_FOTO + " INTEGER, "
             + SAMMLUNG_SCHNITT +" INTEGER, "
             +SAMMLUNG_RANK + " INTEGER NOT NULL, "
-            +SAMMLUNG_KATEGORIE+ " INTEGER);";
-
-    //Tabelle Stil anlegen
-    private static final String TABLE_STIL_CREATE="CREATE TABLE "
-            +TABLE_NAME_STIL+"("+STIL_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "
-            +STIL_STIL+" TEXT NOT NULL," +
-            "FOREIGN KEY("+ STIL_ID+") REFERENCES "+SAMMLUNG_STIL+");";
-
-    //Tabelle Bezeichnung anlegen
-    private static final String TABLE_BEZEICHNUNG_CREATE="CREATE TABLE "
-            +TABLE_NAME_BEZEICHNUNG+"("+BEZEICHNUNG_ID+ " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            +BEZEICHNUNG_BEZEICHNUNG+" TEXT NOT NULL," +
-            "FOREIGN KEY("+ BEZEICHNUNG_ID+") REFERENCES "+ SAMMLUNG_BEZEICHNUNG+ ");";
-
-    //Tabelle Farbe anlegen
-    private static final String TABLE_FARBE_CREATE="CREATE TABLE "
-            +TABLE_NAME_FARBE+"("+FARBE_ID+ " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            +FARBE_FARBE+" TEXT NOT NULL, "+
-            "FOREIGN KEY(" + FARBE_ID +") REFERENCES "+ SAMMLUNG_FARBE+");";
-
-    //Tabelle Foto anlegen
-    private static final String TABLE_FOTO_CREATE="CREATE TABLE "
-            +TABLE_NAME_FOTO+"("+FOTO_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "
-            +FOTO_FOTO+" BLOB, " +
-            "FOREIGN KEY ("+ FOTO_ID+") REFERENCES "+ SAMMLUNG_FOTO+");";
-
-    //Tabelle Schnitt anlegen
-    private static final String TABLE_SCHNITT_CREATE="CREATE TABLE "
-            +TABLE_NAME_SCHNITT+"("+SCHNITT_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "
-            +SCHNITT_SCHNITT+" TEXT NOT NULL, " +
-            "FOREIGN KEY ("+ SCHNITT_ID+") REFERENCES "+ SAMMLUNG_SCHNITT+");";
+            +SAMMLUNG_KATEGORIE+ " INTEGER,"
+            +" FOREIGN KEY("+SAMMLUNG_STIL +") REFERENCES "+STIL_ID+", "
+            +" FOREIGN KEY("+SAMMLUNG_BEZEICHNUNG +") REFERENCES "+ BEZEICHNUNG_ID+", "
+            +" FOREIGN KEY(" + SAMMLUNG_FARBE +") REFERENCES "+ FARBE_ID
+            +", FOREIGN KEY ("+SAMMLUNG_FOTO +") REFERENCES "+ FOTO_ID
+            +", FOREIGN KEY ("+SAMMLUNG_SCHNITT +") REFERENCES "+ SCHNITT_ID
+            +" );";
 
 
     private static final String TABLE_SAMMLUNG_DROP = "DROP TABLE IF EXISTS" +TABLE_NAME_SAMMLUNG;
 
-   public DBOpenHelper(Context context){
+    public DBOpenHelper(Context context){
         super(context, DATABASE_NAME,null,DATABASE_VERSION );
         Log.d(TAG, "DbHelper hat die Datenbank: " + getDatabaseName() + " erzeugt.");
     }
 
-@Override
-public void onCreate(SQLiteDatabase db) {
-    try {
-      //Tabelle Sammlung
-        Log.d(TAG, "Die Tabelle wird mit SQL-Befehl: " + TABLE_SAMMLUNG_CREATE + " angelegt.");
-        db.execSQL(TABLE_SAMMLUNG_CREATE);
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        try {
+            //Tabelle Stil
+            Log.d(TAG, "Die Tabelle wird mit SQL-Befehl: " + TABLE_STIL_CREATE + " angelegt.");
+            db.execSQL(TABLE_STIL_CREATE);
 
-        //Tabelle Stil
-        Log.d(TAG, "Die Tabelle wird mit SQL-Befehl: " + TABLE_STIL_CREATE + " angelegt.");
-        db.execSQL(TABLE_STIL_CREATE);
+            //Tabelle Bezeichnung
+            Log.d(TAG, "Die Tabelle wird mit SQL-Befehl: " + TABLE_BEZEICHNUNG_CREATE + " angelegt.");
+            db.execSQL(TABLE_BEZEICHNUNG_CREATE);
 
-        //Tabelle Bezeichnung
-        Log.d(TAG, "Die Tabelle wird mit SQL-Befehl: " + TABLE_BEZEICHNUNG_CREATE + " angelegt.");
-        db.execSQL(TABLE_BEZEICHNUNG_CREATE);
+            //Tabelle Farbe
+            Log.d(TAG, "Die Tabelle wird mit SQL-Befehl: " + TABLE_FARBE_CREATE + " angelegt.");
+            db.execSQL(TABLE_FARBE_CREATE);
 
-        //Tabelle Farbe
-        Log.d(TAG, "Die Tabelle wird mit SQL-Befehl: " + TABLE_FARBE_CREATE + " angelegt.");
-        db.execSQL(TABLE_FARBE_CREATE);
+            //Tabelle Foto
+            Log.d(TAG, "Die Tabelle wird mit SQL-Befehl: " + TABLE_FOTO_CREATE + " angelegt.");
+            db.execSQL(TABLE_FOTO_CREATE);
 
-        //Tabelle Foto
-        Log.d(TAG, "Die Tabelle wird mit SQL-Befehl: " + TABLE_FOTO_CREATE + " angelegt.");
-        db.execSQL(TABLE_FOTO_CREATE);
+            //Tabelle Schnitt
+            Log.d(TAG, "Die Tabelle wird mit SQL-Befehl: " + TABLE_SCHNITT_CREATE + " angelegt.");
+            db.execSQL(TABLE_SCHNITT_CREATE);
 
-        //Tabelle Schnitt
-        Log.d(TAG, "Die Tabelle wird mit SQL-Befehl: " + TABLE_SCHNITT_CREATE + " angelegt.");
-        db.execSQL(TABLE_SCHNITT_CREATE);
+            //Tabelle Sammlung
+            Log.d(TAG, "Die Tabelle wird mit SQL-Befehl: " + TABLE_SAMMLUNG_CREATE + " angelegt.");
+            db.execSQL(TABLE_SAMMLUNG_CREATE);
 
+        }
+        catch (Exception ex) {
+            Log.e(TAG, "Fehler beim Anlegen der Tabelle: " + ex.getMessage());
+        }
     }
-    catch (Exception ex) {
-        Log.e(TAG, "Fehler beim Anlegen der Tabelle: " + ex.getMessage());
-    }
-}
 
 
 
 
-@Override
+    @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
         Log.w(TAG, "Upgrade der DB Version von " + oldVersion+ " zu "+ newVersion+ " ; alle Daten werden gelöscht");
         db.execSQL(TABLE_SAMMLUNG_DROP);
         onCreate(db);
-}
+    }
 }

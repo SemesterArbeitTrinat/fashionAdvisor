@@ -1,6 +1,7 @@
 package floria.fashionadvisor.tomsc.decisiontree;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by tomsc on 10.05.2018.
@@ -16,11 +17,11 @@ public class Outfit {
 
 
 
-    public Outfit(ArrayList<String> color, ArrayList<String> style, ArrayList<String> cut)
+    public Outfit(String[] style)
     {
-        ClothingAttributes attributes = new ClothingAttributes(color, style, cut);          //add Arraylist to attributes
+        //ClothingAttributes attributes = new ClothingAttributes(color);          //add Arraylist to attributes
 
-        this.lowerPartQueue = new ClothingPartList(attributes);                  //get a lowerPartQueue with DecisionTreeLowerPart
+        this.lowerPartQueue = new ClothingPartList(style);                  //get a lowerPartQueue with DecisionTreeLowerPart
         this.lowerPart = lowerPartQueue.getClothingPartList().get(0);                                             // put first item of lowerPartQueue as lowerPart
         this.upperPartQueue = new ClothingPartList(lowerPart);
         this.upperPart = upperPartQueue.getClothingPartList().get(0);
