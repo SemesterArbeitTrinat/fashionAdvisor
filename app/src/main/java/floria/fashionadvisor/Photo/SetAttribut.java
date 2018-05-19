@@ -22,7 +22,11 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.List;
+
 import floria.fashionadvisor.R;
+import floria.fashionadvisor.database.DB;
+import floria.fashionadvisor.database.DBDataSource;
 
 import static floria.fashionadvisor.Photo.NewPhoto.detectedColor;
 
@@ -50,6 +54,7 @@ private String DBStyle;
 private Boolean DBallePara=true;
 private TextCheked adapter;
 private String DBToast;
+private DBDataSource DBspeichern;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -71,6 +76,8 @@ private String DBToast;
         kurz= (RadioButton) findViewById(R.id.Kurz);
         lang= (RadioButton) findViewById(R.id.Lang);
         GridView style = (GridView) findViewById(R.id.test);
+        DBspeichern = new DBDataSource(this);
+        DBspeichern.open();
 
         mSpinner = (Spinner) findViewById(R.id.farbe);
 
@@ -169,7 +176,13 @@ private void saveInDB(){
                 Toast.makeText(getApplicationContext(), DBToast+" wählen", Toast.LENGTH_LONG).show();
             }
             else {
+
+
+                DBspeichern.addDB(DBStyle,DBCat,DBFarbe,DBSchnitt,8,0,0,"1",DBTopcat);
+                showAllListEntries();
                 Toast.makeText(getApplicationContext(), "Foto gespeichert", Toast.LENGTH_LONG).show();
+
+
             }
         }
     });
@@ -177,6 +190,17 @@ private void saveInDB(){
 
 
 }
+    private void showAllListEntries () {
+
+        List<DB> DBList = DBspeichern.getAllDB();
+
+
+   /* ArrayAdapter<DB> adapter = (ArrayAdapter<DB>) mDBListView.getAdapter();
+
+    adapter.clear();
+    adapter.addAll(DBList);
+    adapter.notifyDataSetChanged();*/
+    }
 
 private void werteInDB(){
     DBToast="";

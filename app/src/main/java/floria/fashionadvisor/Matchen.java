@@ -1,5 +1,7 @@
 package floria.fashionadvisor;
 
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -9,25 +11,29 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.ViewSwitcher;
-
+import floria.fashionadvisor.tomsc.decisiontree.Outfit;
 /**
  * Created by floria on 13/03/2018.
  */
 
-public class Matchen extends AppCompatActivity {
-private int currentIndex=0;
-private int count=3;
+public class Matchen extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+
 private ImageSwitcher myImageSwitcher;
 private ImageSwitcher switchUnten;
 private Button btnPrw;
 private  Button btnNxt;
-private Button btnPrwU;
+private  Button btnPrwU;
 private  Button btnNxtU;
+private Spinner styleSelected;
+private Outfit mOutfit;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,11 +50,13 @@ private  Button btnNxtU;
         btnPrwU = (Button) findViewById(R.id.buttonPrwUnten);
         btnNxtU = (Button) findViewById(R.id.buttonNxtUnten);
 
+        styleSelected = (Spinner) findViewById(R.id.styleWahl);
+        styleSelected.setOnItemSelectedListener(this);
+        chooseStyle();
         ImageSwitcher myImageSwitcher = (ImageSwitcher) findViewById(R.id.switchOben);
         myImageSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
 
             public View makeView() {
-// TODO Auto-generated method stub
 
 // Create a new ImageView and set it's properties
                 ImageView imageView = new ImageView(getApplicationContext());
@@ -62,7 +70,6 @@ private  Button btnNxtU;
         switchUnten.setFactory(new ViewSwitcher.ViewFactory() {
 
             public View makeView() {
-// TODO Auto-generated method stub
 
 // Create a new ImageView and set it's properties
                 ImageView imageView = new ImageView(getApplicationContext());
@@ -88,56 +95,64 @@ private  Button btnNxtU;
 
     }
 
+    private void chooseStyle(){
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.style_array, android.R.layout.simple_spinner_item);
+// Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+// Apply the adapter to the spinner
+        styleSelected.setAdapter(adapter);
+
+    }
+
+    //Performing action onItemSelected and onNothing selected
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View v, int pos, long id) {
+
+       // mOutfit= new Outfit(styleSelected.getSelectedItem().toString());
+
+        // Toast.makeText(getApplicationContext(), pos, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> arg0) {
+    }
+
     private void obenSwitch(){
 
         btnPrw.setOnClickListener (new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
-                currentIndex--;
-                //  Check If index reaches maximum then reset it
-                if (currentIndex < 0)
-                    currentIndex = count;
-                //  myImageSwitcher.setImageResource(imageIds[currentIndex]); // set the image in ImageSwitcher
+      //    Drawable drawable =new BitmapDrawable(mOutfit.showPrwUpperPart().getBitmaph());
+        //  myImageSwitcher.setImageDrawable(drawable); // set the image in ImageSwitcher
+
             }
         });
 
         btnNxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
-                currentIndex++;
-                //  Check If index reaches maximum then reset it
-                if (currentIndex == count)
-                    currentIndex = 0;
-                //  myImageSwitcher.setImageResource(imageIds[currentIndex]); // set the image in ImageSwitcher
+          //    Drawable drawable = new BitmapDrawable(mOutfit.showNextUpperPart().getBitmaph());
+            //  myImageSwitcher.setImageDrawable(drawable);
             }
         });
     }
 
     private void untenSwitch(){
-
         btnPrwU.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
-                currentIndex--;
-                //  Check If index reaches maximum then reset it
-                if (currentIndex < 0)
-                    currentIndex = count;
-                //  myImageSwitcher.setImageResource(imageIds[currentIndex]); // set the image in ImageSwitcher
+            //    Drawable drawable = new BitmapDrawable(mOutfit.showPrwLowerPart().getBitmaph());
+              //  switchUnten.setImageDrawable(drawable);
             }
         });
 
         btnNxtU.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
-                currentIndex++;
-                //  Check If index reaches maximum then reset it
-                if (currentIndex == count)
-                    currentIndex = 0;
-                //  myImageSwitcher.setImageResource(imageIds[currentIndex]); // set the image in ImageSwitcher
+                Drawable drawable = new BitmapDrawable(mOutfit.showNextLowerPart().getBitmaph());
+                switchUnten.setImageDrawable(drawable);
             }
         });
     }

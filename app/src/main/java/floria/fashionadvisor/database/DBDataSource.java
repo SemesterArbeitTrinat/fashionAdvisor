@@ -30,7 +30,8 @@ public class DBDataSource {
             DBOpenHelper.SAMMLUNG_RANK,
             DBOpenHelper.SAMMLUNG_FAVORIT,
             DBOpenHelper.SAMMLUNG_HAEUFIGKEIT,
-            DBOpenHelper.SAMMLUNG_FOTO
+            DBOpenHelper.SAMMLUNG_FOTO,
+            DBOpenHelper.SAMMLUNG_KATEGORIE
 
     };
 

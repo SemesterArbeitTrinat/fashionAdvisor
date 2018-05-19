@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import floria.fashionadvisor.R;
+import floria.fashionadvisor.database.DBDataSource;
 
 /**
  * Created by floria on 13/03/2018.
@@ -28,11 +29,13 @@ public class NewPhoto extends AppCompatActivity {
     private FrameLayout  cSurface;
     public static String detectedColor;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.neuaufnehmen);
         cSurface = (FrameLayout) findViewById(R.id.photo_view);
+
         newPic();
 
     }
@@ -108,11 +111,11 @@ public class NewPhoto extends AppCompatActivity {
 
             if (data != null) {
                 try {
-                SimpleDateFormat timeStampFormat = new SimpleDateFormat("yyyy-MM-dd-HH.mm.ss");
+               /* SimpleDateFormat timeStampFormat = new SimpleDateFormat("yyyy-MM-dd-HH.mm.ss");
                 String fileName = "photo_" + timeStampFormat.format(new Date())+ ".jpg";
 
                 // Metadata pour la photo
-             /*   ContentValues values = new ContentValues();
+                ContentValues values = new ContentValues();
                 values.put(MediaStore.Images.Media.TITLE, fileName);
                 values.put(MediaStore.Images.Media.DISPLAY_NAME, fileName);
                 values.put(MediaStore.Images.Media.DESCRIPTION, "Image prise par FormationCamera");
@@ -139,6 +142,8 @@ public class NewPhoto extends AppCompatActivity {
 
 
                 cSurface.removeView(mPreview);
+
+
 
 
                 Intent callSetattribut = new Intent(NewPhoto.this, SetAttribut.class);

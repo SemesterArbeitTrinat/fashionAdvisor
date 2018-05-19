@@ -11,13 +11,21 @@ public class Outfit {
 
     private Item upperPart;
     private Item lowerPart;
+    private int lenghtListUnten;
+    private int lenghtListOben;
 
     private ClothingPartList upperPartQueue;
     private ClothingPartList lowerPartQueue;
 
 
+    public int getLenghtListUnten() {
+        return lenghtListUnten;
+    }
+    public int getLenghtListOben() {
+        return lenghtListOben;
+    }
 
-    public Outfit(String style)
+     public Outfit(String style)
     {
         //ClothingAttributes attributes = new ClothingAttributes(color);          //add Arraylist to attributes
 
@@ -25,9 +33,8 @@ public class Outfit {
         this.lowerPart = lowerPartQueue.getClothingPartList().get(0);                                             // put first item of lowerPartQueue as lowerPart
         this.upperPartQueue = new ClothingPartList(style);
         this.upperPart = upperPartQueue.getClothingPartList().get(0);
-
-
-
+        lenghtListUnten = lowerPartQueue.getClothingPartList().size();
+        lenghtListOben= upperPartQueue.getClothingPartList().size();
     }
 
 
@@ -50,15 +57,39 @@ public class Outfit {
 
     public Item showNextUpperPart() {
         int key = upperPartQueue.getClothingPartList().indexOf(upperPart);
-        setLowerPart(upperPartQueue.getClothingPartList().get(key + 1));
+        if (lenghtListOben==key) {
+            setUpperPart(upperPartQueue.getClothingPartList().get(0));
+        }
+        else{setUpperPart(upperPartQueue.getClothingPartList().get(key + 1));}
         return upperPart;
     }
 
     public Item showNextLowerPart() {
         int key = lowerPartQueue.getClothingPartList().indexOf(lowerPart);
-        setLowerPart(lowerPartQueue.getClothingPartList().get(key + 1));
+        if (lenghtListUnten==key) {
+            setLowerPart(lowerPartQueue.getClothingPartList().get(0));
+        }
+        else{setLowerPart(lowerPartQueue.getClothingPartList().get(key + 1));}
         return lowerPart;
     }
+    public Item showPrwUpperPart() {
+        int key = upperPartQueue.getClothingPartList().indexOf(upperPart);
+        if (key==0) {
+            setUpperPart(upperPartQueue.getClothingPartList().get(lenghtListOben));
+        }
+        else{setUpperPart(upperPartQueue.getClothingPartList().get(key - 1));}
+        return upperPart;
+    }
+
+    public Item showPrwLowerPart() {
+        int key = lowerPartQueue.getClothingPartList().indexOf(lowerPart);
+        if (key==0) {
+            setLowerPart(lowerPartQueue.getClothingPartList().get(lenghtListUnten));
+        }
+        else{setLowerPart(lowerPartQueue.getClothingPartList().get(key - 1));}
+        return lowerPart;
+    }
+
 
 
 
