@@ -32,7 +32,7 @@ public class ChooseProbability {
 
     /**
      * Method to sort the ranks of the items from maximum rank to minimum rank
-     * @return
+     * @return List listByRandomizedRank
      */
     protected static List<Item> sortMaxMin (List<Item> list) {
 
@@ -47,9 +47,6 @@ public class ChooseProbability {
 
         Collections.sort(listByRandomizedRank);
         return listByRandomizedRank;
-
-
-
 
     }
 

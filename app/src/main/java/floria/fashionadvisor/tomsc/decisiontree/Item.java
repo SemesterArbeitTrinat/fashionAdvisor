@@ -123,8 +123,9 @@ public class Item implements Comparable<Item> {
         this.favourite = favourite;
     }
 
-    public int compareTo(Item compareitem) {
-        int compareRandomizedRank= compareitem.getRandomizedRank();
+    @Override
+    public int compareTo(Item compareItem) {
+        int compareRandomizedRank= compareItem.getRandomizedRank();
         /* For Ascending order*/
         return this.randomizedRank-compareRandomizedRank;
 
