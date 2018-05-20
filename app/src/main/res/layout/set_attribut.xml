@@ -13,15 +13,18 @@
 
     <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="6dp"
         android:scrollbars="vertical"
-        android:visibility="visible">
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Fotoprw">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="80dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.416"
@@ -31,7 +34,7 @@
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="119dp">
+                android:layout_height="103dp">
 
                 <Button
                     android:id="@+id/OT"
@@ -61,6 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="45dp"
                     android:layout_marginEnd="8dp"
+                    android:layout_marginTop="6dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/OT">
 
@@ -258,4 +262,16 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <ImageView
+        android:id="@+id/Fotoprw"
+        android:layout_width="220dp"
+        android:layout_height="196dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include2"
+        app:srcCompat="@color/colorBack" />
 </android.support.constraint.ConstraintLayout>

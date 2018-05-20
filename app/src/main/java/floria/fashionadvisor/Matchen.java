@@ -110,7 +110,7 @@ private Outfit mOutfit;
     @Override
     public void onItemSelected(AdapterView<?> parent, View v, int pos, long id) {
 
-       // mOutfit= new Outfit(styleSelected.getSelectedItem().toString());
+      //  mOutfit= new Outfit(styleSelected.getSelectedItem().toString());
 
         // Toast.makeText(getApplicationContext(), pos, Toast.LENGTH_LONG).show();
     }
@@ -124,7 +124,7 @@ private Outfit mOutfit;
         btnPrw.setOnClickListener (new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-      //    Drawable drawable =new BitmapDrawable(mOutfit.showPrwUpperPart().getBitmaph());
+      //  Drawable drawable =new BitmapDrawable(mOutfit.showPrwUpperPart().getBitmaph());
         //  myImageSwitcher.setImageDrawable(drawable); // set the image in ImageSwitcher
 
             }

@@ -1,6 +1,8 @@
 package floria.fashionadvisor.Photo;
 
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -27,7 +29,9 @@ public class NewPhoto extends AppCompatActivity {
     private CameraView mPreview;
     private FileOutputStream stream;
     private FrameLayout  cSurface;
+    public static Drawable DBphotoDrwb;
     public static String detectedColor;
+
 
 
     @Override
@@ -75,19 +79,19 @@ public class NewPhoto extends AppCompatActivity {
                switch (event.getAction()) {
                    case MotionEvent.ACTION_DOWN:
 
+                       //Die Koordinaten speichern
                        int X = (int)event.getX();
                        int Y = (int)event.getY();
-
-                       mPreview.getmBtm();
+                       //Den rgb Code für den Pixel mit Koordinaten(X,Y) speichern
                        mPreview.rgbcolor(X,Y);
+                       //Diese Werte wieder nehmen
                        int red = mPreview.getRed();
                        int green = mPreview.getGreen();
                        int blue = mPreview.getBlue();
+                       //Die richtige Farbe zuordnen
                        String colo = colortxt(red,green,blue);
                        detectedColor=colo;
-                       Toast.makeText(getApplicationContext(), "R:"+red+" G:"+green+" B:"+blue,
-                               Toast.LENGTH_LONG).show();
-
+                       DBphotoDrwb = new BitmapDrawable(mPreview.getmBtm());
                        mCamera.takePicture(null, null, jpegCallback);
                        break;
                    case MotionEvent.ACTION_UP:

@@ -14,13 +14,14 @@ import android.database.Cursor;
 import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
+import static floria.fashionadvisor.MainActivity.database;
 
 
 public class DBDataSource {
 
     private static final String LOG_TAG = DBDataSource.class.getSimpleName();
 
-    public static SQLiteDatabase database;
+
     private DBOpenHelper dbHelper;
 
     private String[] Sammlung = {

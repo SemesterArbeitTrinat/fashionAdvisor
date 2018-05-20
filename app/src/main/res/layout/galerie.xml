@@ -27,10 +27,16 @@
             android:icon="@android:drawable/btn_star_big_on" />
 
         <android.support.design.widget.TabItem
-            android:id="@+id/Pulli"
+            android:id="@+id/All"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pulli" />
+            android:text="Alles" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/Top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Top" />
 
         <android.support.design.widget.TabItem
             android:id="@+id/tshirt"
@@ -45,17 +51,12 @@
             android:text="Hosen" />
 
         <android.support.design.widget.TabItem
-            android:id="@+id/Short"
+            android:id="@+id/Pullover"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Short" />
+            android:text="Pulli" />
 
 
-        <android.support.design.widget.TabItem
-            android:id="@+id/Kleid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Kleid" />
 
     </android.support.design.widget.TabLayout>
 
