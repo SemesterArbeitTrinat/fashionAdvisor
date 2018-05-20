@@ -1,7 +1,7 @@
 package floria.fashionadvisor.tomsc.decisiontree;
 
 
-import static floria.fashionadvisor.database.DBDataSource.database;
+import static floria.fashionadvisor.MainActivity.database;
 
 
 /**

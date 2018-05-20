@@ -1,6 +1,7 @@
 package floria.fashionadvisor;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -8,10 +9,13 @@ import android.view.View;
 import android.widget.Button;
 
 import floria.fashionadvisor.Photo.NewPhoto;
+import floria.fashionadvisor.database.DBOpenHelper;
 import floria.fashionadvisor.database.TestDB;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static SQLiteDatabase database;
+private DBOpenHelper dbHelper;
     // Neue Objekte "Button"
     private Button galerie,matchen,neuphoto, testdb;
     @Override
@@ -24,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
         //definir notre toolbar en tant qu'actionBar
         setSupportActionBar(toolbar);
-
+        dbHelper=new DBOpenHelper(this);
+        database= dbHelper.getWritableDatabase();
         allActivty();
 
 

@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -24,11 +25,14 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import floria.fashionadvisor.MainActivity;
+import floria.fashionadvisor.Matchen;
 import floria.fashionadvisor.R;
 import floria.fashionadvisor.database.DB;
 import floria.fashionadvisor.database.DBDataSource;
 
 import static floria.fashionadvisor.Photo.NewPhoto.detectedColor;
+import static floria.fashionadvisor.Photo.NewPhoto.DBphotoDrwb;
 
 /**
  * Created by floria on 08/04/2018.
@@ -39,21 +43,11 @@ public class SetAttribut extends AppCompatActivity implements AdapterView.OnItem
 
 private  Spinner mSpinner;
 private TopCat mTopCat = new TopCat() ;
-private Button top;
-private Button down;
-private Button saveAll;
-private RadioButton goodcolor;
-private RadioButton falsecolor;
-private RadioButton kurz;
-private RadioButton lang;
-private String DBTopcat;
-private String DBCat;
-private String DBSchnitt;
-private String DBFarbe;
-private String DBStyle;
+private Button top,down,saveAll;
+private RadioButton goodcolor,falsecolor,kurz,lang;
+private String DBTopcat,DBCat,DBSchnitt,DBFarbe,DBStyle,DBToast;
 private Boolean DBallePara=true;
 private TextCheked adapter;
-private String DBToast;
 private DBDataSource DBspeichern;
 
     @Override
@@ -76,6 +70,8 @@ private DBDataSource DBspeichern;
         kurz= (RadioButton) findViewById(R.id.Kurz);
         lang= (RadioButton) findViewById(R.id.Lang);
         GridView style = (GridView) findViewById(R.id.test);
+        ImageView fotoprw = (ImageView) findViewById(R.id.Fotoprw); // get the reference of ImageView
+        fotoprw.setImageDrawable(DBphotoDrwb);
         DBspeichern = new DBDataSource(this);
         DBspeichern.open();
 
@@ -181,6 +177,8 @@ private void saveInDB(){
                 DBspeichern.addDB(DBStyle,DBCat,DBFarbe,DBSchnitt,8,0,0,"1",DBTopcat);
                 showAllListEntries();
                 Toast.makeText(getApplicationContext(), "Foto gespeichert", Toast.LENGTH_LONG).show();
+                Intent callMain = new Intent(SetAttribut.this, MainActivity.class);
+                startActivity(callMain);
 
 
             }

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static floria.fashionadvisor.database.DBDataSource.database;
+import static floria.fashionadvisor.MainActivity.database;
 import static floria.fashionadvisor.tomsc.decisiontree.ChooseProbability.sortMaxMin;
 import floria.fashionadvisor.byteArrayPhoto.SavePhotoTask;
 
