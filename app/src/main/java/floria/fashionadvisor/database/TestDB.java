@@ -59,6 +59,14 @@ public class TestDB extends AppCompatActivity{
     //Einzeltest:
     //dataSource.insert(bild.getBytes(bild.pfad("storage/emulated/0/Download/Alphas_Dino.bmp")));
 
+
+    showAllListEntries();
+    //Inhalte per ID aus der DB löschen
+    dataSource.deleteDB(3);
+    //Inhalte updaten per ID
+    dataSource.updateDB(2,"Freizeit","T-Shirt","Tükis","LANG",10,1,200,bild.getBytes(bild.pfad("storage/emulated/0/Download/Alphas_Dino.bmp")) ,"Oberteil");
+
+
   }
 
 

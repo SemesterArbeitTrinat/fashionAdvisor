@@ -76,7 +76,7 @@ public class DBDataSource {
 
 
 
-   /* public DB createDB(int Stil, int Bezeichnung, int Farbe, int Schnitt, int Rank, int Favorit, int Haeufigkeit, String Photo){
+    public void updateDB(int id,String Stil, String Bezeichnung, String Farbe, String Schnitt, int Rank, int Favorit, int Haeufigkeit, byte [] Photo, String Kategorie){
 
         ContentValues values= new ContentValues();
 
@@ -88,18 +88,21 @@ public class DBDataSource {
         values.put(DBOpenHelper.SAMMLUNG_SCHNITT, Schnitt);
         values.put(DBOpenHelper.SAMMLUNG_RANK, Rank);
         values.put(DBOpenHelper.SAMMLUNG_HAEUFIGKEIT, Haeufigkeit);
+        values.put(DBOpenHelper.SAMMLUNG_KATEGORIE, Kategorie);
 
-        long insertID= database.insert(DBOpenHelper.TABLE_NAME_SAMMLUNG,null,values);
+        database.update(DBOpenHelper.TABLE_NAME_SAMMLUNG, values,
+                        DBOpenHelper._ID + "=" +id,
+                        null);
+        Log.d(LOG_TAG, "Eintrag upgedatet! ID: "+ id);
 
-        Cursor cursor=database.query(DBOpenHelper.TABLE_NAME_SAMMLUNG,
-                Sammlung, DBOpenHelper._ID+ "="+insertID,
-                null, null,null, null);
-        cursor.moveToFirst();
-        DB DB = cursorToDB(cursor);
-        cursor.close();
-        return DB;
-    }*/
+    }
+    public void deleteDB(int id){
 
+        database.delete(DBOpenHelper.TABLE_NAME_SAMMLUNG, DBOpenHelper._ID + "=" +id,null);
+        Log.d(LOG_TAG, "Eintrag gelöscht! ID: "+ id);
+    }
+
+    //spezielle Methoden für die Fotos
     public long insert(byte[] image) {
         Log.e(LOG_TAG,"Bild gespeichert");
         return database.insert(DBOpenHelper.TABLE_NAME_SAMMLUNG, null, createContentValues(image));
@@ -143,6 +146,8 @@ public class DBDataSource {
         return DB;
 
     }
+
+
 
 
 
