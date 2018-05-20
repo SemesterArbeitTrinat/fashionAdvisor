@@ -34,7 +34,7 @@ public class ChooseProbability {
      * Method to sort the ranks of the items from maximum rank to minimum rank
      * @return
      */
-    public static List<Item> sortMaxMin (List<Item> list) {
+    protected static List<Item> sortMaxMin (List<Item> list) {
 
         List<Item> listByRandomizedRank = new ArrayList<>();
         for (int i = 0; i<list.size(); i++)

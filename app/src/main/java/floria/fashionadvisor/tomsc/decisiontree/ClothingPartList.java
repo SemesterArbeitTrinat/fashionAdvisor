@@ -31,7 +31,7 @@ public class ClothingPartList {
 
     private List<Item> clothingPartList;
 
-    public ClothingPartList (String style)
+    public ClothingPartList (String style, String kategorie)
     {
 
 
@@ -49,8 +49,8 @@ public class ClothingPartList {
                             DBOpenHelper.SAMMLUNG_FOTO,                 //BLOB
                             DBOpenHelper.SAMMLUNG_FAVORIT,              //Integer
                             };
-        String selection = DBOpenHelper.SAMMLUNG_STIL + "=?";
-        String[] selectionArgs = {style};
+        String selection = DBOpenHelper.SAMMLUNG_STIL + "=? AND " + DBOpenHelper.SAMMLUNG_KATEGORIE + "=? ";
+        String[] selectionArgs = {style, kategorie};
 
         String groupBy = null;
         String having = null;

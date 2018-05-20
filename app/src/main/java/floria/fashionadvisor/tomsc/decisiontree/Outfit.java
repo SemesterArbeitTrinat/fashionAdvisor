@@ -29,8 +29,8 @@ public class Outfit {
     {
         //ClothingAttributes attributes = new ClothingAttributes(color);          //add Arraylist to attributes
 
-        this.lowerPartQueue = new ClothingPartList(style);                  //get a lowerPartQueue with DecisionTreeLowerPart
-        this.upperPartQueue = new ClothingPartList(style);
+        this.lowerPartQueue = new ClothingPartList(style, "unterteil");                  //get a lowerPartQueue with DecisionTreeLowerPart
+        this.upperPartQueue = new ClothingPartList(style, "oberteil");
         this.lowerPart = lowerPartQueue.getItem(0);                                             // put first item of lowerPartQueue as lowerPart
         this.upperPart = upperPartQueue.getItem(0);
         lenghtListUnten = lowerPartQueue.size();
