@@ -8,6 +8,7 @@ import java.io.ByteArrayOutputStream;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Bitmap.CompressFormat;
+import android.util.Log;
 
 public class Utilities {
 
@@ -22,4 +23,11 @@ public class Utilities {
     public static Bitmap getImage(byte[] image) {
         return BitmapFactory.decodeByteArray(image, 0, image.length);
     }
+
+    //Bildpfad
+    public static Bitmap pfad (String  dateipfad){
+        Bitmap pfad = BitmapFactory.decodeFile(dateipfad);
+        return pfad;
+    };
+
 }

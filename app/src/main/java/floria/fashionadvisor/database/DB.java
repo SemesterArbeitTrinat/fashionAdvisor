@@ -1,5 +1,7 @@
 package floria.fashionadvisor.database;
 
+import java.sql.Blob;
+
 /**
  * Created by Seehund on 24.04.2018.
  */
@@ -13,11 +15,11 @@ public class DB {
     private int Rank;
     private int Favorit;
     private int Haeufigkeit;
-    private String Photo;
+    private byte [] Photo;
     private String Kategorie;
 
 
-   public DB (int id, String Stil, String Bezeichnung, String Farbe, String Schnitt, int Rank, int Favorit, int Haeufigkeit, String Photo, String Kategorie){
+   public DB (int id, String Stil, String Bezeichnung, String Farbe, String Schnitt, int Rank, int Favorit, int Haeufigkeit, byte [] Photo, String Kategorie){
        this.id = id;
        this.Stil = Stil;
        this.Bezeichnung = Bezeichnung;
@@ -44,7 +46,7 @@ public class DB {
 
     @Override
     public String toString (){
-       String output = "Bezeichnung: "+Bezeichnung + " Farbe:  "+ Farbe+ " Stil "+Stil;
+       String output = "Bezeichnung: "+Bezeichnung + " Farbe:  "+ Farbe+ " Stil "+Stil +" Foto: "+Photo;
        return output;
     }
 

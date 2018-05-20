@@ -4,6 +4,9 @@ package floria.fashionadvisor.database;
  * Created by Seehund on 04.05.2018.
  *
  * */
+import android.content.ContentValues;
+import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +21,9 @@ import floria.fashionadvisor.database.DB;
 import floria.fashionadvisor.database.DBDataSource;
 import floria.fashionadvisor.MainActivity;
 import floria.fashionadvisor.R;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 public class TestDB extends AppCompatActivity{
 
@@ -26,7 +32,7 @@ public class TestDB extends AppCompatActivity{
   private DBDataSource dataSource;
   public ListView mDBListView;
 
-  protected void onCreate(@Nullable Bundle savedInstanceState) {
+  public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     //setContentView(R.layout.testdb);
 
@@ -43,22 +49,29 @@ public class TestDB extends AppCompatActivity{
     dataSource.open();
 
 
-    dataSource.addDB("Freizeit","T-Shirt","DUNKELPINK","KURZ",10,1,200,"1","Oberteil");
-    dataSource.addDB("Sport","Jogging","HELLPINK","LANG",2,1,2,"2", "Unterteil");
-    dataSource.addDB("Sommer","Top","MITTELPINK","KURZ",1,0,1,"5", "Oberteil");
+    Utilities bild= new Utilities();
 
+    dataSource.addDB("Freizeit","T-Shirt","DUNKELPINK","KURZ",10,1,200,bild.getBytes(bild.pfad("storage/emulated/0/Download/Alphas_Dino.bmp")) ,"Oberteil");
+    dataSource.addDB("Sport","Jogging","HELLPINK","LANG",2,1,2,bild.getBytes(bild.pfad("storage/emulated/0/Download/Alphas_Dino.bmp")), "Unterteil");
+    dataSource.addDB("Sommer","Top","MITTELPINK","KURZ",1,0,1,bild.getBytes(bild.pfad("storage/emulated/0/Download/Alphas_Dino.bmp")), "Oberteil");
 
+    //Unbedingt Bild auf dem Testgerät!!! - Berechtigung Speicherzugriff erteilen!
+    //Einzeltest:
+    //dataSource.insert(bild.getBytes(bild.pfad("storage/emulated/0/Download/Alphas_Dino.bmp")));
 
   }
+
+
   @Override
   protected void onResume(){
     super.onResume();
     Log.d(LOG_TAG, "Die Datenquelle wird geÃ¶ffnet.");
     dataSource.open();
 
-    Log.d(LOG_TAG, "Folgende EintrrÃ¤ge sind in der Datenbank:");
+    Log.d(LOG_TAG, "Folgende Eintraege sind in der Datenbank:");
     // hm
     showAllListEntries();
+
 
   }
 

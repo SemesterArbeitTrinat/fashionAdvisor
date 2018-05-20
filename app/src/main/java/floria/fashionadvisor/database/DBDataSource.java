@@ -10,6 +10,8 @@ import android.util.Log;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,7 +55,7 @@ public class DBDataSource {
     }
 
 
-    public void addDB (String Stil, String Bezeichnung, String Farbe, String Schnitt, int Rank, int Favorit, int Haeufigkeit, String Photo, String Kategorie){
+    public void addDB (String Stil, String Bezeichnung, String Farbe, String Schnitt, int Rank, int Favorit, int Haeufigkeit, byte [] Photo, String Kategorie){
 
         ContentValues values= new ContentValues();
 
@@ -98,7 +100,9 @@ public class DBDataSource {
     }*/
 
     public long insert(byte[] image) {
+        Log.e(LOG_TAG,"Bild gespeichert");
         return database.insert(DBOpenHelper.TABLE_NAME_SAMMLUNG, null, createContentValues(image));
+
     }
 
     private ContentValues createContentValues(byte[] image) {
@@ -125,7 +129,7 @@ public class DBDataSource {
         String bezeichnung= cursor.getString(idBezeichnung);
         String farbe= cursor.getString(idFarbe);
         int favorit= cursor.getInt(idFavorit);
-        String photo= cursor.getString(idPhoto);
+        byte [] photo= cursor.getBlob(idPhoto);
         String stil= cursor.getString(idStil);
         String schnitt= cursor.getString(idSchnitt);
         int rank= cursor.getInt(idRank);

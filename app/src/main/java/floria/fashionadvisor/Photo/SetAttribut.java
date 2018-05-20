@@ -178,7 +178,7 @@ private void saveInDB(){
             else {
 
 
-                DBspeichern.addDB(DBStyle,DBCat,DBFarbe,DBSchnitt,8,0,0,"1",DBTopcat);
+                DBspeichern.addDB(DBStyle,DBCat,DBFarbe,DBSchnitt,8,0,0,null,DBTopcat);
                 showAllListEntries();
                 Toast.makeText(getApplicationContext(), "Foto gespeichert", Toast.LENGTH_LONG).show();
 
