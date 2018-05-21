@@ -132,7 +132,7 @@ public class GalerieItem extends Fragment {
 
         while (!cursor.isAfterLast()) {
             int id, rank, favourite;
-            String cut, name, color, category, style_fromDB_String, image_path;
+            String cut, name, color, category, style_fromDB_String;
             String[] style_fromDB_Array;
             byte[] image;
 

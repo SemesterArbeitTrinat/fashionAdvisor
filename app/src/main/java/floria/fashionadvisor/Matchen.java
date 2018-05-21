@@ -124,17 +124,22 @@ private Outfit mOutfit;
         btnPrw.setOnClickListener (new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-      //  Drawable drawable =new BitmapDrawable(mOutfit.showPrwUpperPart().getBitmaph());
+
+         // Drawable drawable =new BitmapDrawable(mOutfit.showPrwUpperPart().getBitmaph());
         //  myImageSwitcher.setImageDrawable(drawable); // set the image in ImageSwitcher
 
             }
         });
 
+
+        //Nächste Teil anzeigen
         btnNxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-          //    Drawable drawable = new BitmapDrawable(mOutfit.showNextUpperPart().getBitmaph());
-            //  myImageSwitcher.setImageDrawable(drawable);
+                //Nächste Bitmap von der Liste speichern
+             Drawable drawable = new BitmapDrawable(mOutfit.showNextUpperPart().getBitmaph());
+               //Den Bitmap in den ImageSwitcher zuordnen
+            myImageSwitcher.setImageDrawable(drawable);
             }
         });
     }

@@ -28,22 +28,22 @@ public class ViewGalerie extends FragmentPagerAdapter {
         fav.setIndex(position);
         fav.setNameCat("Fav");
         switch (position){
-            case 1:
+            case 0:
                 fav.setNameCat("Fav");
                 break;
-            case 2:
+            case 1:
                 fav.setNameCat("Alle");
                 break;
-            case 3:
+            case 2:
                 fav.setNameCat("Top");
                 break;
-            case 4:
+            case 3:
                 fav.setNameCat("Tshirt");
                 break;
-            case 5:
+            case 4:
                 fav.setNameCat("Hose");
                 break;
-            case 6:
+            case 5:
                 fav.setNameCat("Pullover");
                 break;
 

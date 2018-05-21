@@ -1,6 +1,7 @@
 package floria.fashionadvisor.Photo;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.hardware.Camera;
@@ -30,8 +31,9 @@ public class NewPhoto extends AppCompatActivity {
     private FileOutputStream stream;
     private FrameLayout  cSurface;
     public static Drawable DBphotoDrwb;
+    public static Bitmap DBFotoBtm;
     public static String detectedColor;
-
+    public static byte[] DBByteImage;
 
 
     @Override
@@ -92,6 +94,7 @@ public class NewPhoto extends AppCompatActivity {
                        String colo = colortxt(red,green,blue);
                        detectedColor=colo;
                        DBphotoDrwb = new BitmapDrawable(mPreview.getmBtm());
+                       DBFotoBtm=mPreview.getmBtm();
                        mCamera.takePicture(null, null, jpegCallback);
                        break;
                    case MotionEvent.ACTION_UP:
@@ -115,6 +118,8 @@ public class NewPhoto extends AppCompatActivity {
 
             if (data != null) {
                 try {
+
+                    DBByteImage=data;
                /* SimpleDateFormat timeStampFormat = new SimpleDateFormat("yyyy-MM-dd-HH.mm.ss");
                 String fileName = "photo_" + timeStampFormat.format(new Date())+ ".jpg";
 

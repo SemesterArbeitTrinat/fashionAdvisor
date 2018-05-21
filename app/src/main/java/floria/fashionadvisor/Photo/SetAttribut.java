@@ -30,9 +30,13 @@ import floria.fashionadvisor.Matchen;
 import floria.fashionadvisor.R;
 import floria.fashionadvisor.database.DB;
 import floria.fashionadvisor.database.DBDataSource;
+import floria.fashionadvisor.database.Utilities;
 
+import static floria.fashionadvisor.Photo.NewPhoto.DBByteImage;
 import static floria.fashionadvisor.Photo.NewPhoto.detectedColor;
 import static floria.fashionadvisor.Photo.NewPhoto.DBphotoDrwb;
+import static floria.fashionadvisor.Photo.NewPhoto.DBFotoBtm;
+import static floria.fashionadvisor.database.Utilities.getBytes;
 
 /**
  * Created by floria on 08/04/2018.
@@ -46,6 +50,7 @@ private TopCat mTopCat = new TopCat() ;
 private Button top,down,saveAll;
 private RadioButton goodcolor,falsecolor,kurz,lang;
 private String DBTopcat,DBCat,DBSchnitt,DBFarbe,DBStyle,DBToast;
+private Utilities DBFoto;
 private Boolean DBallePara=true;
 private TextCheked adapter;
 private DBDataSource DBspeichern;
@@ -69,6 +74,7 @@ private DBDataSource DBspeichern;
         falsecolor= (RadioButton) findViewById(R.id.falseColor);
         kurz= (RadioButton) findViewById(R.id.Kurz);
         lang= (RadioButton) findViewById(R.id.Lang);
+        DBFoto= new Utilities();
         GridView style = (GridView) findViewById(R.id.test);
         ImageView fotoprw = (ImageView) findViewById(R.id.Fotoprw); // get the reference of ImageView
         fotoprw.setImageDrawable(DBphotoDrwb);
@@ -173,8 +179,7 @@ private void saveInDB(){
             }
             else {
 
-
-                DBspeichern.addDB(DBStyle,DBCat,DBFarbe,DBSchnitt,8,0,0,null,DBTopcat);
+                DBspeichern.addDB(DBStyle,DBCat,DBFarbe,DBSchnitt,8,0,0,getBytes(DBFotoBtm),DBTopcat);
                 showAllListEntries();
                 Toast.makeText(getApplicationContext(), "Foto gespeichert", Toast.LENGTH_LONG).show();
                 Intent callMain = new Intent(SetAttribut.this, MainActivity.class);
