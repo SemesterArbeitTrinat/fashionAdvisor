@@ -1,8 +1,10 @@
 package floria.fashionadvisor.tomsc.decisiontree;
 
 
-import static floria.fashionadvisor.MainActivity.database;
+import javax.sql.DataSource;
 
+import static floria.fashionadvisor.MainActivity.database;
+import floria.fashionadvisor.database.DBDataSource;
 
 /**
  * Created by tomsc on 10.05.2018.
@@ -23,7 +25,7 @@ public class Ranking {
         } else {
             newRank = item.getRank() + 1;
         }
-        wirteRankToDatabase(item, newRank);
+        DBDataSource.updateDB(item.getId(), newRank);
 
     }
 
@@ -36,12 +38,7 @@ public class Ranking {
         } else {
             newRank = item.getRank() - 1;
         }
-        wirteRankToDatabase(item, newRank);
-    }
-
-    private static void wirteRankToDatabase (Item item, int rank)
-    {
-        //SQL term to get insert into a row by ID
+        DBDataSource.updateDB(item.getId(), newRank);
     }
 
 }

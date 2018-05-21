@@ -96,11 +96,34 @@ public class DBDataSource {
         Log.d(LOG_TAG, "Eintrag upgedatet! ID: "+ id);
 
     }
+
+
+    /**
+     * Method to update only the rank in a existing database entry
+     * @param id
+     * @param rank
+     */
+    public static void updateDB(int id, int rank)
+    {
+        ContentValues values = new ContentValues();
+        values.put(DBOpenHelper.SAMMLUNG_RANK, rank);
+
+        database.update(DBOpenHelper.TABLE_NAME_SAMMLUNG, values,
+                DBOpenHelper._ID + "=" +id,
+                null);
+        Log.d(LOG_TAG, "Eintrag upgedatet! ID: "+ id);
+    }
+
+
     public void deleteDB(int id){
 
         database.delete(DBOpenHelper.TABLE_NAME_SAMMLUNG, DBOpenHelper._ID + "=" +id,null);
         Log.d(LOG_TAG, "Eintrag gelöscht! ID: "+ id);
     }
+
+
+
+
 
     //spezielle Methoden für die Fotos
     public long insert(byte[] image) {
