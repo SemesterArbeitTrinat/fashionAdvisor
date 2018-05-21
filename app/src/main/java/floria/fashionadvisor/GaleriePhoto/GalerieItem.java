@@ -90,25 +90,23 @@ public class GalerieItem extends Fragment {
         String orderBy =null; //DBOpenHelper._ID+" DESC";
         String limit = null;//"10";
         String selection;
-        String selecHelp;
         String[] selectionArgs=new String[1];
 
         if (categorie.equals("Fav")){
              selection = DBOpenHelper.SAMMLUNG_FAVORIT + "=?";
-             selecHelp= valueOf("1");
+             selectionArgs[0]=valueOf("1");
 
              }
         else if (categorie.equals("Alle")){
 
-            selection = DBOpenHelper._ID+"=?";
-            selecHelp ="_";
-
+            selection = null;
+            selectionArgs=null;
         }
         else{
             selection = DBOpenHelper.SAMMLUNG_BEZEICHNUNG + "=?";
-            selecHelp= categorie;
+            selectionArgs[0]= categorie;
         }
-        selectionArgs[0]=selecHelp;
+
         Cursor cursor = db.query(table, columns, selection, selectionArgs, groupBy, having, orderBy);
         cursor.moveToFirst();
 

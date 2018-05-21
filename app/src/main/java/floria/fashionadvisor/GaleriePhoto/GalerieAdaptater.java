@@ -65,31 +65,33 @@ public class GalerieAdaptater extends ArrayAdapter {
         dataBank.open();
         ImageView imageView = (ImageView) v.findViewById(R.id.imageView);
        // imageView.setImageResource(R.drawable.ic_launcher_background);
+        final ToggleButton favC= (ToggleButton) v.findViewById(R.id.radioButton);
+
+        //Bitmap von Datenbank
+        // alleCatItem ist die Liste mit allen Item durch Kategorie sortiert
         Drawable drawable = new BitmapDrawable(alleCatItem.get(position).getBitmaph());
         imageView.setImageDrawable(drawable);
-        final ToggleButton favC= (ToggleButton) v.findViewById(R.id.radioButton);
+        /*fav(int favorite, ToogleButton favC) ist um die richtige Zustand von Favoriten
+             an die ToogleButton zugeben */
         fav(alleCatItem.get(position).getFavourite(),favC);
-
         favC.setOnClickListener(new View.OnClickListener() {
-
             public void onClick(View v) {
-         int indiz=alleCatItem.get(position).getFavourite();
+         int indiz=alleCatItem.get(position).getFavourite();//Der Zustand zu favorite
          switch (indiz){
              case 0:
+                 //Erst wird die Datenbank verändert
                  dataBank.updateDBfav(alleCatItem.get(position).getId(),1);
+                 /*Dann wird den List<Item> verändert (Sonnst muss erste ein andere Fragment
+                    anrufen um den Ansicht zu verändern */
                  alleCatItem.get(position).setFavourite(1);
-                // List<DB> DBList = dataBank.getAllDB();
                  break;
              case 1:
                  dataBank.updateDBfav(alleCatItem.get(position).getId() ,0);
                  alleCatItem.get(position).setFavourite(0);
-
-
                  default:
                      break;
          }
 
-             // fav(alleCatItem.get(position).getFavourite(),favC);
 
             }
             });

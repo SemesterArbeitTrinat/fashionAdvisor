@@ -186,6 +186,10 @@ private void saveInDB(){
                 //Drawable d=getResources().getDrawable(R.drawable.ic_launcher_background);
                // Bitmap bitmap= ((BitmapDrawable)d).getBitmap();
                 DBspeichern.addDB(DBStyle,DBCat,DBFarbe,DBSchnitt,8,0,0,DBFoto.getBytes(bitmap),DBTopcat);
+
+               // DBspeichern.addDB(DBStyle,DBCat,DBFarbe,DBSchnitt,8,0,0,getBytes(DBFotoBtm),DBTopcat);
+
+
                 //DBspeichern.addDB(DBStyle,DBCat,DBFarbe,DBSchnitt,8,0,0,null,DBTopcat);
                 showAllListEntries();
                 Toast.makeText(getApplicationContext(), "Foto gespeichert", Toast.LENGTH_LONG).show();
@@ -276,7 +280,7 @@ private void werteInDB(){
         else {DBToast=DBToast+" und Style";}
         //Toast.makeText(getApplicationContext(), "Style wählen", Toast.LENGTH_LONG).show();
     }
-    Toast.makeText(getApplicationContext(), DBStyle, Toast.LENGTH_LONG).show();
+ //   Toast.makeText(getApplicationContext(), DBStyle, Toast.LENGTH_LONG).show();
 
 
 }

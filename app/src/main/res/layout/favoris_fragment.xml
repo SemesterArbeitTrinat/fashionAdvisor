@@ -3,6 +3,7 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:orientation="vertical">
@@ -22,8 +23,8 @@ android:orientation="vertical">
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/imageView"
         android:layout_alignStart="@+id/imageView"
-        android:layout_alignTop="@+id/imageView"
-        android:layout_marginTop="102dp"
+        android:layout_below="@+id/imageView"
+        android:backgroundTint="@android:color/transparent"
         android:button="@android:drawable/btn_radio"
         android:text="Fav"
         android:textOff="Fav"
@@ -34,7 +35,6 @@ android:orientation="vertical">
         android:id="@+id/button2"
         android:layout_width="50dp"
         android:layout_height="40dp"
-        android:layout_alignBaseline="@+id/radioButton"
         android:layout_alignBottom="@+id/radioButton"
         android:layout_toEndOf="@+id/radioButton"
         android:layout_toRightOf="@+id/radioButton"
