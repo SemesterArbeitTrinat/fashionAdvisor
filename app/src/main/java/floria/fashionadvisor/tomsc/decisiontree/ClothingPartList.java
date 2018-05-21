@@ -49,8 +49,8 @@ public class ClothingPartList {
                             DBOpenHelper.SAMMLUNG_FOTO,                 //BLOB
                             DBOpenHelper.SAMMLUNG_FAVORIT,              //Integer
                             };
-        String selection = DBOpenHelper.SAMMLUNG_STIL + "=? AND " + DBOpenHelper.SAMMLUNG_KATEGORIE + "=? ";
-        String[] selectionArgs = {style, kategorie};
+        String selection = null; // DBOpenHelper.SAMMLUNG_STIL + "=? AND " + DBOpenHelper.SAMMLUNG_KATEGORIE + "=? ";
+        String[] selectionArgs = null;// {style, kategorie};
 
         String groupBy = null;
         String having = null;
@@ -66,6 +66,10 @@ public class ClothingPartList {
             String[] style_fromDB_Array;
             byte[] image;
 
+            style_fromDB_String = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_STIL));
+            if (style_fromDB_String.contains(style)) { }            //continue in this loop iteration
+            else { continue;}                                       //go to next loop iteration
+
             id = cursor.getInt(cursor.getColumnIndex(DBOpenHelper._ID));
             rank = cursor.getInt(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_RANK));
             favourite = cursor.getInt(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_FAVORIT));
@@ -73,7 +77,7 @@ public class ClothingPartList {
             name = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_BEZEICHNUNG));
             color = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_FARBE));
             category = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_KATEGORIE));
-            style_fromDB_String = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_STIL));
+
             image = cursor.getBlob(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_FOTO));
 
             style_fromDB_Array = style_fromDB_String.split("\\|");

@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://C:\Users\flori\Documents\Ampere\flori\Documents\Ampere\6 et dernier Semestre\projet\fashionAdvisor\A.I-fashionAdvisor.iml" filepath="C:\Users\flori\Documents\Ampere\flori\Documents\Ampere\6 et dernier Semestre\projet\fashionAdvisor\A.I-fashionAdvisor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../flori/Documents/Ampere/flori/Documents/Ampere/6 et dernier Semestre/projet/fashionAdvisor/A.I-fashionAdvisor.iml" filepath="$PROJECT_DIR$/../../../flori/Documents/Ampere/flori/Documents/Ampere/6 et dernier Semestre/projet/fashionAdvisor/A.I-fashionAdvisor.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fashionAdvisor.iml" filepath="$PROJECT_DIR$/fashionAdvisor.iml" />
       <module fileurl="file://$PROJECT_DIR$/fashionAdvisor.iml" filepath="$PROJECT_DIR$/fashionAdvisor.iml" />
     </modules>
   </component>
