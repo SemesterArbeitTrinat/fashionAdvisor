@@ -1,12 +1,16 @@
 package floria.fashionadvisor.tomsc.decisiontree;
 
 
+//import android.content.res.Resources;
+
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import floria.fashionadvisor.R;
 import floria.fashionadvisor.database.*;
 
 import java.util.ArrayList;
@@ -15,6 +19,8 @@ import java.util.List;
 
 import static floria.fashionadvisor.MainActivity.database;
 import static floria.fashionadvisor.tomsc.decisiontree.ChooseProbability.sortMaxMin;
+import static java.security.AccessController.getContext;
+
 import floria.fashionadvisor.byteArrayPhoto.SavePhotoTask;
 
 /**
@@ -49,8 +55,8 @@ public class ClothingPartList {
                             DBOpenHelper.SAMMLUNG_FOTO,                 //BLOB
                             DBOpenHelper.SAMMLUNG_FAVORIT,              //Integer
                             };
-        String selection = null; // DBOpenHelper.SAMMLUNG_STIL + "=? AND " + DBOpenHelper.SAMMLUNG_KATEGORIE + "=? ";
-        String[] selectionArgs = null;// {style, kategorie};
+        String selection = DBOpenHelper.SAMMLUNG_KATEGORIE + "=? "; //null; // DBOpenHelper.SAMMLUNG_STIL + "=? AND " + DBOpenHelper.SAMMLUNG_KATEGORIE + "=? ";
+        String[] selectionArgs = {kategorie}; //null;// {style, kategorie};
 
         String groupBy = null;
         String having = null;
@@ -67,30 +73,41 @@ public class ClothingPartList {
             byte[] image;
 
             style_fromDB_String = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_STIL));
-            if (style_fromDB_String.contains(style)) { }            //continue in this loop iteration
-            else { continue;}                                       //go to next loop iteration
+            if (style_fromDB_String.contains(style)) { //}            //continue in this loop iteration
+                // else { continue;}                                       //go to next loop iteration
 
-            id = cursor.getInt(cursor.getColumnIndex(DBOpenHelper._ID));
-            rank = cursor.getInt(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_RANK));
-            favourite = cursor.getInt(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_FAVORIT));
-            cut = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_SCHNITT));
-            name = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_BEZEICHNUNG));
-            color = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_FARBE));
-            category = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_KATEGORIE));
+                id = cursor.getInt(cursor.getColumnIndex(DBOpenHelper._ID));
+                rank = cursor.getInt(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_RANK));
+                favourite = cursor.getInt(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_FAVORIT));
+                cut = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_SCHNITT));
+                name = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_BEZEICHNUNG));
+                color = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_FARBE));
+                category = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_KATEGORIE));
 
-            image = cursor.getBlob(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_FOTO));
+                image = cursor.getBlob(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_FOTO));
 
-            style_fromDB_Array = style_fromDB_String.split("\\|");
+                style_fromDB_Array = style_fromDB_String.split("\\|");
 
-            Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+                Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
 
 
-            //Item(String name, String cut, String topcategory, String color, String[] style, Bitmap bitmap, int rank, int id, int favourite
-            Item item = new Item(name, cut, category, color, style_fromDB_Array, bitmap, rank, id, favourite);
-            unrandomizedList.add(item);
-            cursor.moveToNext();
+                //Item(String name, String cut, String topcategory, String color, String[] style, Bitmap bitmap, int rank, int id, int favourite
+                Item item = new Item(name, cut, category, color, style_fromDB_Array, bitmap, rank, id, favourite);
+                unrandomizedList.add(item);
+            }
+                cursor.moveToNext();
+
+
         }
 
+       if(unrandomizedList.size()==0) {
+       String test[]={" "};
+           Bitmap bitmap = BitmapFactory.decodeResource(Resources.getSystem(),R.drawable.ic_launcher_background);
+
+           Item item = new Item("lehr", "lehr", "lehr", "lehr",test , bitmap, 8, 1, 0);
+           unrandomizedList.add(item);
+
+       }
         cursor.close();
 
         List<Item> randomizedList_sorted;
