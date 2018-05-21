@@ -11,8 +11,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +22,7 @@ import java.util.List;
 import floria.fashionadvisor.Galerie;
 import floria.fashionadvisor.MainActivity;
 import floria.fashionadvisor.R;
+import floria.fashionadvisor.database.DB;
 import floria.fashionadvisor.database.DBDataSource;
 import floria.fashionadvisor.tomsc.decisiontree.Item;
 import static floria.fashionadvisor.MainActivity.database;
@@ -61,9 +64,35 @@ public class GalerieAdaptater extends ArrayAdapter {
         dataBank = new DBDataSource(getContext());
         dataBank.open();
         ImageView imageView = (ImageView) v.findViewById(R.id.imageView);
+       // imageView.setImageResource(R.drawable.ic_launcher_background);
         Drawable drawable = new BitmapDrawable(alleCatItem.get(position).getBitmaph());
         imageView.setImageDrawable(drawable);
+        final ToggleButton favC= (ToggleButton) v.findViewById(R.id.radioButton);
+        fav(alleCatItem.get(position).getFavourite(),favC);
 
+        favC.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+         int indiz=alleCatItem.get(position).getFavourite();
+         switch (indiz){
+             case 0:
+                 dataBank.updateDBfav(alleCatItem.get(position).getId(),1);
+                 alleCatItem.get(position).setFavourite(1);
+                // List<DB> DBList = dataBank.getAllDB();
+                 break;
+             case 1:
+                 dataBank.updateDBfav(alleCatItem.get(position).getId() ,0);
+                 alleCatItem.get(position).setFavourite(0);
+
+
+                 default:
+                     break;
+         }
+
+             // fav(alleCatItem.get(position).getFavourite(),favC);
+
+            }
+            });
         Button deletes= (Button) v.findViewById(R.id.button2);
         deletes.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -80,7 +109,23 @@ public class GalerieAdaptater extends ArrayAdapter {
 
     }
 
+private void fav (int favChek, ToggleButton favC){
 
+        switch (favChek){
+            case 0:
+                favC.setChecked(false);
+
+                break;
+            case 1:
+                favC.setChecked(true);
+                break;
+            default:
+                break;
+
+        }
+
+
+}
 
 
 

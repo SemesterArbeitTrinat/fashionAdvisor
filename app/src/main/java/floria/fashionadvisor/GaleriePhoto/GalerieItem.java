@@ -22,6 +22,7 @@ import floria.fashionadvisor.database.DBOpenHelper;
 import floria.fashionadvisor.tomsc.decisiontree.Item;
 
 import static floria.fashionadvisor.MainActivity.database;
+import static java.lang.String.valueOf;
 
 /**
  * Created by flori on 22/03/2018.
@@ -61,26 +62,7 @@ public class GalerieItem extends Fragment {
         GridView mGv = (GridView) v.findViewById(R.id.GVgalerie);
         GalerieAdaptater mGalerieAdaptater = new GalerieAdaptater(this.getContext(),R.layout.favoris_fragment,allenItem(nameCat));
         mGv.setAdapter(mGalerieAdaptater);
-// Inflate the layout for this fragment
-      /*  switch (index){
-            case 0:
-                return inflater.inflate(R.layout.favoris_fragment, container, false);
-            case 1:
 
-                return inflater.inflate(R.layout.tee_shirt_frag, container, false);
-            case 2:
-                return inflater.inflate(R.layout.favoris_fragment, container, false);
-            case 3:
-                return inflater.inflate(R.layout.favoris_fragment, container, false);
-            case 4:
-                return inflater.inflate(R.layout.tee_shirt_frag, container, false);
-            case 5:
-                return inflater.inflate(R.layout.favoris_fragment, container, false);
-            default:
-                return null;
-        }
-       // return inflater.inflate(R.layout.favoris_fragment, container, false);
-    }*/
         return v;
     }
 
@@ -113,7 +95,7 @@ public class GalerieItem extends Fragment {
 
         if (categorie.equals("Fav")){
              selection = DBOpenHelper.SAMMLUNG_FAVORIT + "=?";
-             selecHelp="0";
+             selecHelp= valueOf("1");
 
              }
         else if (categorie.equals("Alle")){
@@ -149,6 +131,7 @@ public class GalerieItem extends Fragment {
             style_fromDB_Array = style_fromDB_String.split("\\|");
 
             Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+           // Bitmap bitmap = BitmapFactory.decodeResource(getContext().getResources(),R.drawable.ic_launcher_background);
 
 
             //Item(String name, String cut, String topcategory, String color, String[] style, Bitmap bitmap, int rank, int id, int favourite

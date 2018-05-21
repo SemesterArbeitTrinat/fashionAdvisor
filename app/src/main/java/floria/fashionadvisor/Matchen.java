@@ -50,10 +50,7 @@ private Outfit mOutfit;
         btnPrwU = (Button) findViewById(R.id.buttonPrwUnten);
         btnNxtU = (Button) findViewById(R.id.buttonNxtUnten);
 
-        styleSelected = (Spinner) findViewById(R.id.styleWahl);
-        styleSelected.setOnItemSelectedListener(this);
-        chooseStyle();
-        ImageSwitcher myImageSwitcher = (ImageSwitcher) findViewById(R.id.switchOben);
+         myImageSwitcher = (ImageSwitcher) findViewById(R.id.switchOben);
         myImageSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
 
             public View makeView() {
@@ -66,7 +63,7 @@ private Outfit mOutfit;
             }
         });
 
-        ImageSwitcher switchUnten = (ImageSwitcher) findViewById(R.id.switchUnten);
+        switchUnten = (ImageSwitcher) findViewById(R.id.switchUnten);
         switchUnten.setFactory(new ViewSwitcher.ViewFactory() {
 
             public View makeView() {
@@ -89,6 +86,12 @@ private Outfit mOutfit;
         myImageSwitcher.setOutAnimation(out);
         switchUnten.setInAnimation(in);
         switchUnten.setOutAnimation(out);
+
+        styleSelected = (Spinner) findViewById(R.id.styleWahl);
+        styleSelected.setOnItemSelectedListener(this);
+        chooseStyle();
+
+
         obenSwitch();
         untenSwitch();
 
@@ -110,8 +113,12 @@ private Outfit mOutfit;
     @Override
     public void onItemSelected(AdapterView<?> parent, View v, int pos, long id) {
 
-      //  mOutfit= new Outfit(styleSelected.getSelectedItem().toString());
-
+        mOutfit= new Outfit(styleSelected.getSelectedItem().toString());
+        Drawable drawable =new BitmapDrawable(mOutfit.getUpperPart().getBitmaph());
+       myImageSwitcher.setImageDrawable(drawable);
+       // myImageSwitcher.setImageResource(R.drawable.px800_tshirt_icon);
+        Drawable drawable1 = new BitmapDrawable(mOutfit.getLowerPart().getBitmaph());
+        switchUnten.setImageDrawable(drawable1);
         // Toast.makeText(getApplicationContext(), pos, Toast.LENGTH_LONG).show();
     }
 
@@ -125,8 +132,9 @@ private Outfit mOutfit;
             @Override
             public void onClick(View v) {
 
-         // Drawable drawable =new BitmapDrawable(mOutfit.showPrwUpperPart().getBitmaph());
-        //  myImageSwitcher.setImageDrawable(drawable); // set the image in ImageSwitcher
+         Drawable drawable =new BitmapDrawable(mOutfit.showPrwUpperPart().getBitmaph());
+          myImageSwitcher.setImageDrawable(drawable); // set the image in ImageSwitcher
+
 
             }
         });
@@ -148,8 +156,8 @@ private Outfit mOutfit;
         btnPrwU.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            //    Drawable drawable = new BitmapDrawable(mOutfit.showPrwLowerPart().getBitmaph());
-              //  switchUnten.setImageDrawable(drawable);
+               Drawable drawable = new BitmapDrawable(mOutfit.showPrwLowerPart().getBitmaph());
+               switchUnten.setImageDrawable(drawable);
             }
         });
 

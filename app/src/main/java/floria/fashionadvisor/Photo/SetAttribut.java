@@ -4,7 +4,11 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -178,8 +182,11 @@ private void saveInDB(){
                 Toast.makeText(getApplicationContext(), DBToast+" wählen", Toast.LENGTH_LONG).show();
             }
             else {
-
-                DBspeichern.addDB(DBStyle,DBCat,DBFarbe,DBSchnitt,8,0,0,getBytes(DBFotoBtm),DBTopcat);
+                Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.px800_tshirt_icon);
+                //Drawable d=getResources().getDrawable(R.drawable.ic_launcher_background);
+               // Bitmap bitmap= ((BitmapDrawable)d).getBitmap();
+                DBspeichern.addDB(DBStyle,DBCat,DBFarbe,DBSchnitt,8,0,0,DBFoto.getBytes(bitmap),DBTopcat);
+                //DBspeichern.addDB(DBStyle,DBCat,DBFarbe,DBSchnitt,8,0,0,null,DBTopcat);
                 showAllListEntries();
                 Toast.makeText(getApplicationContext(), "Foto gespeichert", Toast.LENGTH_LONG).show();
                 Intent callMain = new Intent(SetAttribut.this, MainActivity.class);
@@ -217,10 +224,10 @@ private void werteInDB(){
 
         switch (mTopCat.getIndex()){
             case 1 :
-                DBTopcat="Unterteil";
+                DBTopcat="unterteil";
                 break;
             case 2:
-                DBTopcat="Oberteil";
+                DBTopcat="oberteil";
                 break;
         }
 
@@ -269,7 +276,7 @@ private void werteInDB(){
         else {DBToast=DBToast+" und Style";}
         //Toast.makeText(getApplicationContext(), "Style wählen", Toast.LENGTH_LONG).show();
     }
-   // Toast.makeText(getApplicationContext(), DBStyle, Toast.LENGTH_LONG).show();
+    Toast.makeText(getApplicationContext(), DBStyle, Toast.LENGTH_LONG).show();
 
 
 }

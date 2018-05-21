@@ -57,7 +57,7 @@ public class Outfit {
 
     public Item showNextUpperPart() {
         int key = upperPartQueue.getClothingPartList().indexOf(upperPart);
-        if (lenghtListOben==key) {
+        if (lenghtListOben-1==key) {
             setUpperPart(upperPartQueue.getClothingPartList().get(0));
         }
         else{setUpperPart(upperPartQueue.getClothingPartList().get(key + 1));}
@@ -66,7 +66,7 @@ public class Outfit {
 
     public Item showNextLowerPart() {
         int key = lowerPartQueue.getClothingPartList().indexOf(lowerPart);
-        if (lenghtListUnten==key) {
+        if (lenghtListUnten-1==key) {
             setLowerPart(lowerPartQueue.getClothingPartList().get(0));
         }
         else{setLowerPart(lowerPartQueue.getClothingPartList().get(key + 1));}

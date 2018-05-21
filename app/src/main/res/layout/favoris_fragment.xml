@@ -16,7 +16,7 @@ android:orientation="vertical">
         android:foregroundGravity="center"
         app:srcCompat="@color/colorBack" />
 
-    <RadioButton
+    <ToggleButton
         android:id="@+id/radioButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,7 +26,9 @@ android:orientation="vertical">
         android:layout_marginTop="102dp"
         android:button="@android:drawable/btn_radio"
         android:text="Fav"
-        android:textSize="18sp" />
+        android:textOff="Fav"
+        android:textOn="Fav"
+        android:textSize="14sp" />
 
     <Button
         android:id="@+id/button2"

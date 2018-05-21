@@ -46,7 +46,7 @@ public class DB {
 
     @Override
     public String toString (){
-       String output = "Bezeichnung: "+Bezeichnung + " Farbe:  "+ Farbe+ " Stil "+Stil +" Foto: "+Photo;
+       String output = "Bezeichnung: "+Bezeichnung + " Farbe:  "+ Farbe+ " Stil "+Stil +" Favorit: "+Favorit;
        return output;
     }
 

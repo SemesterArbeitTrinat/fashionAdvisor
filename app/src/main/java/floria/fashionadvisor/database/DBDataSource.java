@@ -113,7 +113,21 @@ public class DBDataSource {
                 null);
         Log.d(LOG_TAG, "Eintrag upgedatet! ID: "+ id);
     }
+    /**
+     * Method to update only the fav statu in a existing database entry
+     * @param id
+     * @param fav
+     */
+    public static void updateDBfav(int id, int fav)
+    {
+        ContentValues values = new ContentValues();
+        values.put(DBOpenHelper.SAMMLUNG_FAVORIT, fav);
 
+        database.update(DBOpenHelper.TABLE_NAME_SAMMLUNG, values,
+                DBOpenHelper._ID + "=" +id,
+                null);
+        Log.d(LOG_TAG, "Eintrag upgedatet! fav: "+ fav);
+    }
 
     public void deleteDB(int id){
 
