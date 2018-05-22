@@ -88,6 +88,7 @@ public class ClothingPartList {
 
                 style_fromDB_Array = style_fromDB_String.split("\\|");
 
+
                 Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
 
 
@@ -104,7 +105,7 @@ public class ClothingPartList {
        String test[]={" "};
            Bitmap bitmap = BitmapFactory.decodeResource(Resources.getSystem(),R.drawable.ic_launcher_background);
 
-           Item item = new Item("lehr", "lehr", "lehr", "lehr",test , bitmap, 8, 1, 0);
+           Item item = new Item("leer", "leer", "leer", "leer",test , bitmap, 8, 1, 0);
            unrandomizedList.add(item);
 
        }
