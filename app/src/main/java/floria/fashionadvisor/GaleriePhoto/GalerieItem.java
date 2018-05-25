@@ -112,9 +112,9 @@ public class GalerieItem extends Fragment {
 
         while (!cursor.isAfterLast()) {
             int id, rank, favourite;
-            String cut, name, color, category, style_fromDB_String;
+            String cut, name, color, category, style_fromDB_String,path;
             String[] style_fromDB_Array;
-            byte[] image;
+
 
             id = cursor.getInt(cursor.getColumnIndex(DBOpenHelper._ID));
             rank = cursor.getInt(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_RANK));
@@ -124,16 +124,16 @@ public class GalerieItem extends Fragment {
             color = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_FARBE));
             category = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_KATEGORIE));
             style_fromDB_String = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_STIL));
-            image = cursor.getBlob(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_FOTO));
+            path = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_FOTO));
 
             style_fromDB_Array = style_fromDB_String.split("\\|");
 
-            Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+         //   Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
            // Bitmap bitmap = BitmapFactory.decodeResource(getContext().getResources(),R.drawable.ic_launcher_background);
 
 
             //Item(String name, String cut, String topcategory, String color, String[] style, Bitmap bitmap, int rank, int id, int favourite
-            Item item = new Item(name, cut, category, color, style_fromDB_Array, bitmap, rank, id, favourite);
+            Item item = new Item(name, cut, category, color, style_fromDB_Array, path, rank, id, favourite);
             alleItem.add(item);
             cursor.moveToNext();
         }

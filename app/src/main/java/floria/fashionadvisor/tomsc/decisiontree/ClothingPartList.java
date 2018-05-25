@@ -68,9 +68,9 @@ public class ClothingPartList {
 
         while (!cursor.isAfterLast()) {
             int id, rank, favourite;
-            String cut, name, color, category, style_fromDB_String;
+            String cut, name, color, category, style_fromDB_String,path;
             String[] style_fromDB_Array;
-            byte[] image;
+
 
             style_fromDB_String = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_STIL));
             if (style_fromDB_String.contains(style)) { //}            //continue in this loop iteration
@@ -83,17 +83,16 @@ public class ClothingPartList {
                 name = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_BEZEICHNUNG));
                 color = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_FARBE));
                 category = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_KATEGORIE));
-
-                image = cursor.getBlob(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_FOTO));
+                path = cursor.getString(cursor.getColumnIndex(DBOpenHelper.SAMMLUNG_FOTO));
 
                 style_fromDB_Array = style_fromDB_String.split("\\|");
 
 
-                Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+              //  Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
 
 
                 //Item(String name, String cut, String topcategory, String color, String[] style, Bitmap bitmap, int rank, int id, int favourite
-                Item item = new Item(name, cut, category, color, style_fromDB_Array, bitmap, rank, id, favourite);
+                Item item = new Item(name, cut, category, color, style_fromDB_Array, path, rank, id, favourite);
                 unrandomizedList.add(item);
             }
                 cursor.moveToNext();
@@ -103,9 +102,9 @@ public class ClothingPartList {
 
        if(unrandomizedList.size()==0) {
        String test[]={" "};
-           Bitmap bitmap = BitmapFactory.decodeResource(Resources.getSystem(),R.drawable.ic_launcher_background);
+         //  Bitmap bitmap = BitmapFactory.decodeResource(Resources.getSystem(),R.drawable.ic_launcher_background);
 
-           Item item = new Item("leer", "leer", "leer", "leer",test , bitmap, 8, 1, 0);
+           Item item = new Item("leer", "leer", "leer", "leer",test , "", 8, 1, 0);
            unrandomizedList.add(item);
 
        }

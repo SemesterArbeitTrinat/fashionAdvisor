@@ -1,5 +1,6 @@
 package floria.fashionadvisor;
 
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -114,10 +115,10 @@ private Outfit mOutfit;
     public void onItemSelected(AdapterView<?> parent, View v, int pos, long id) {
 
         mOutfit= new Outfit(styleSelected.getSelectedItem().toString());
-        Drawable drawable =new BitmapDrawable(mOutfit.getUpperPart().getBitmaph());
-       myImageSwitcher.setImageDrawable(drawable);
+        Drawable drawable =new BitmapDrawable(BitmapFactory.decodeFile(mOutfit.getUpperPart().getPath()));
+        myImageSwitcher.setImageDrawable(drawable);
        // myImageSwitcher.setImageResource(R.drawable.px800_tshirt_icon);
-        Drawable drawable1 = new BitmapDrawable(mOutfit.getLowerPart().getBitmaph());
+         Drawable drawable1 = new BitmapDrawable(BitmapFactory.decodeFile(mOutfit.getLowerPart().getPath()));
         switchUnten.setImageDrawable(drawable1);
         // Toast.makeText(getApplicationContext(), pos, Toast.LENGTH_LONG).show();
     }
@@ -132,8 +133,8 @@ private Outfit mOutfit;
             @Override
             public void onClick(View v) {
 
-         Drawable drawable =new BitmapDrawable(mOutfit.showPrwUpperPart().getBitmaph());
-          myImageSwitcher.setImageDrawable(drawable); // set the image in ImageSwitcher
+         Drawable drawable =new BitmapDrawable(BitmapFactory.decodeFile(mOutfit.showPrwUpperPart().getPath()));
+         myImageSwitcher.setImageDrawable(drawable); // set the image in ImageSwitcher
 
 
             }
@@ -145,7 +146,7 @@ private Outfit mOutfit;
             @Override
             public void onClick(View v) {
                 //Nächste Bitmap von der Liste speichern
-             Drawable drawable = new BitmapDrawable(mOutfit.showNextUpperPart().getBitmaph());
+             Drawable drawable = new BitmapDrawable(BitmapFactory.decodeFile(mOutfit.showNextUpperPart().getPath()));
                //Den Bitmap in den ImageSwitcher zuordnen
             myImageSwitcher.setImageDrawable(drawable);
             }
@@ -156,7 +157,7 @@ private Outfit mOutfit;
         btnPrwU.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Drawable drawable = new BitmapDrawable(mOutfit.showPrwLowerPart().getBitmaph());
+              Drawable drawable = new BitmapDrawable(BitmapFactory.decodeFile(mOutfit.showPrwLowerPart().getPath()));
                switchUnten.setImageDrawable(drawable);
             }
         });
@@ -164,8 +165,8 @@ private Outfit mOutfit;
         btnNxtU.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Drawable drawable = new BitmapDrawable(mOutfit.showNextLowerPart().getBitmaph());
-                switchUnten.setImageDrawable(drawable);
+               Drawable drawable = new BitmapDrawable(BitmapFactory.decodeFile(mOutfit.showNextLowerPart().getPath()));
+               switchUnten.setImageDrawable(drawable);
             }
         });
     }

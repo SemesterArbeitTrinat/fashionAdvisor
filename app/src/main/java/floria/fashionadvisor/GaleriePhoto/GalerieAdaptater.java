@@ -2,6 +2,7 @@ package floria.fashionadvisor.GaleriePhoto;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
@@ -69,7 +70,8 @@ public class GalerieAdaptater extends ArrayAdapter {
 
         //Bitmap von Datenbank
         // alleCatItem ist die Liste mit allen Item durch Kategorie sortiert
-        Drawable drawable = new BitmapDrawable(alleCatItem.get(position).getBitmaph());
+       // Drawable drawable = new BitmapDrawable(alleCatItem.get(position).getBitmaph());
+        Drawable drawable= new BitmapDrawable(BitmapFactory.decodeFile(alleCatItem.get(position).getPath()));
         imageView.setImageDrawable(drawable);
         /*fav(int favorite, ToogleButton favC) ist um die richtige Zustand von Favoriten
              an die ToogleButton zugeben */

@@ -39,7 +39,7 @@ import floria.fashionadvisor.database.Utilities;
 import static floria.fashionadvisor.Photo.NewPhoto.DBByteImage;
 import static floria.fashionadvisor.Photo.NewPhoto.detectedColor;
 import static floria.fashionadvisor.Photo.NewPhoto.DBphotoDrwb;
-import static floria.fashionadvisor.Photo.NewPhoto.DBFotoBtm;
+import static floria.fashionadvisor.Photo.NewPhoto.DBPhotoPath;
 import static floria.fashionadvisor.database.Utilities.getBytes;
 
 /**
@@ -187,8 +187,8 @@ private void saveInDB(){
                // Bitmap bitmap= ((BitmapDrawable)d).getBitmap();
                // DBspeichern.addDB(DBStyle,DBCat,DBFarbe,DBSchnitt,8,0,0,DBFoto.getBytes(bitmap),DBTopcat);
 
-               // DBspeichern.addDB(DBStyle,DBCat,DBFarbe,DBSchnitt,8,0,0,getBytes(DBFotoBtm),DBTopcat);
-
+               //
+                DBspeichern.addDB(DBStyle,DBCat,DBFarbe,DBSchnitt,8,0,0,DBPhotoPath,DBTopcat);
 
                 //DBspeichern.addDB(DBStyle,DBCat,DBFarbe,DBSchnitt,8,0,0,null,DBTopcat);
                 showAllListEntries();

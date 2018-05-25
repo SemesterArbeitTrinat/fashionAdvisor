@@ -146,7 +146,7 @@ public class DBDataSource {
 
 
     //spezielle Methoden für die Fotos
-    public long insert(byte[] image) {
+  /*  public long insert(byte[] image) {
         Log.e(LOG_TAG,"Bild gespeichert");
         return database.insert(DBOpenHelper.TABLE_NAME_SAMMLUNG, null, createContentValues(image));
 
@@ -156,7 +156,7 @@ public class DBDataSource {
         ContentValues cv = new ContentValues();
         cv.put(DBOpenHelper.SAMMLUNG_FOTO, image);
         return cv;
-    }
+    }*/
 
     private DB cursorToDB(Cursor cursor){
         int idIndex =cursor.getColumnIndex(DBOpenHelper._ID);

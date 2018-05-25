@@ -12,7 +12,7 @@ public class Item implements Comparable<Item> {
     private String name, cut, topcategory;
     private String color;
     private String[] style = {"","","","",""};
-    private Bitmap bitmap;
+    private String path;
     private int rank, randomizedRank, id, favourite;
 
 
@@ -26,11 +26,11 @@ public class Item implements Comparable<Item> {
         this.rank = 0;
         this.randomizedRank = 0;
         this.id = 0;
-        this.bitmap = null;
+        this.path = "";
 
     }
 
-    public Item(String name, String cut, String topcategory, String color, String[] style, Bitmap bitmap, int rank, int id, int favourite) {
+    public Item(String name, String cut, String topcategory, String color, String[] style, String path, int rank, int id, int favourite) {
         this.topcategory = topcategory;
         this.cut = cut;
         this.name = name;
@@ -40,7 +40,7 @@ public class Item implements Comparable<Item> {
         this.rank = rank;
         this.randomizedRank = 0;
         this.id = id;
-        this.bitmap = bitmap;
+        this.path = path;
     }
 
     public String getName() {
@@ -83,12 +83,12 @@ public class Item implements Comparable<Item> {
         this.style = style;
     }
 
-    public Bitmap getBitmaph() {
-        return bitmap;
+    public String getPath() {
+        return path;
     }
 
-    public void setBitmap(Bitmap bitmap) {
-        this.bitmap = bitmap;
+    public void setPath(Bitmap bitmap) {
+        this.path = path;
     }
 
     public int getRank() {
