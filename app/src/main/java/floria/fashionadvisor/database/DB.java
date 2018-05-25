@@ -15,11 +15,11 @@ public class DB {
     private int Rank;
     private int Favorit;
     private int Haeufigkeit;
-    private byte [] Photo;
+    private String Photo;
     private String Kategorie;
 
 
-   public DB (int id, String Stil, String Bezeichnung, String Farbe, String Schnitt, int Rank, int Favorit, int Haeufigkeit, byte [] Photo, String Kategorie){
+   public DB (int id, String Stil, String Bezeichnung, String Farbe, String Schnitt, int Rank, int Favorit, int Haeufigkeit, String Photo, String Kategorie){
        this.id = id;
        this.Stil = Stil;
        this.Bezeichnung = Bezeichnung;
@@ -46,7 +46,7 @@ public class DB {
 
     @Override
     public String toString (){
-       String output = "Bezeichnung: "+Bezeichnung + " Farbe:  "+ Farbe+ " Stil "+Stil +" Favorit: "+Favorit;
+       String output = "Bezeichnung: "+Bezeichnung + " Farbe:  "+ Farbe+ " Stil "+Stil +" Favorit: "+Favorit + " Dateipfad Foto: "+Photo;
        return output;
     }
 

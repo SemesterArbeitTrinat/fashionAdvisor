@@ -185,7 +185,7 @@ private void saveInDB(){
                 Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.px800_tshirt_icon);
                 //Drawable d=getResources().getDrawable(R.drawable.ic_launcher_background);
                // Bitmap bitmap= ((BitmapDrawable)d).getBitmap();
-                DBspeichern.addDB(DBStyle,DBCat,DBFarbe,DBSchnitt,8,0,0,DBFoto.getBytes(bitmap),DBTopcat);
+               // DBspeichern.addDB(DBStyle,DBCat,DBFarbe,DBSchnitt,8,0,0,DBFoto.getBytes(bitmap),DBTopcat);
 
                // DBspeichern.addDB(DBStyle,DBCat,DBFarbe,DBSchnitt,8,0,0,getBytes(DBFotoBtm),DBTopcat);
 

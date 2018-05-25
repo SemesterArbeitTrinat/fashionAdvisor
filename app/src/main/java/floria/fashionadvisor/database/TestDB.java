@@ -51,9 +51,13 @@ public class TestDB extends AppCompatActivity{
 
     Utilities bild= new Utilities();
 
-    dataSource.addDB("Freizeit","T-Shirt","DUNKELPINK","KURZ",10,1,200,bild.getBytes(bild.pfad("storage/emulated/0/Download/Alphas_Dino.bmp")) ,"Oberteil");
-    dataSource.addDB("Sport","Jogging","HELLPINK","LANG",2,1,2,bild.getBytes(bild.pfad("storage/emulated/0/Download/Alphas_Dino.bmp")), "Unterteil");
-    dataSource.addDB("Sommer","Top","MITTELPINK","KURZ",1,0,1,bild.getBytes(bild.pfad("storage/emulated/0/Download/Alphas_Dino.bmp")), "Oberteil");
+    dataSource.addDB("Freizeit","T-Shirt","DUNKELPINK","KURZ",10,1,200,"storage/emulated/0/Download/Alphas_Dino.bmp" ,"Oberteil");
+    dataSource.addDB("Sport","Jogging","HELLPINK","LANG",2,1,2,"storage/emulated/0/Download/Alphas_Dino.bmp", "Unterteil");
+
+
+
+    dataSource.addDB("Sommer","Top","MITTELPINK","KURZ",1,0,1,
+                      "storage/emulated/0/Download/Alphas_Dino.bmp", "Oberteil");
 
     //Unbedingt Bild auf dem Testgerät!!! - Berechtigung Speicherzugriff erteilen!
     //Einzeltest:
@@ -64,7 +68,7 @@ public class TestDB extends AppCompatActivity{
     //Inhalte per ID aus der DB löschen
     dataSource.deleteDB(3);
     //Inhalte updaten per ID
-    dataSource.updateDB(2,"Freizeit","T-Shirt","Tükis","LANG",10,1,200,bild.getBytes(bild.pfad("storage/emulated/0/Download/Alphas_Dino.bmp")) ,"Oberteil");
+    dataSource.updateDB(2,"Freizeit","T-Shirt","Tükis","LANG",10,1,200,"storage/emulated/0/Download/Alphas_Dino.bmp" ,"Oberteil");
 
 
   }

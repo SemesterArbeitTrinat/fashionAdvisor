@@ -47,7 +47,7 @@ package floria.fashionadvisor.database;
              + SAMMLUNG_FARBE +" TEXT, "
              + SAMMLUNG_FAVORIT + " INTEGER, "
              + SAMMLUNG_HAEUFIGKEIT + " INTEGER, "
-             + SAMMLUNG_FOTO + " BLOB, "
+             + SAMMLUNG_FOTO + " TEXT, "
              + SAMMLUNG_SCHNITT +" TEXT, "
              +SAMMLUNG_RANK + " INTEGER, "
              +SAMMLUNG_KATEGORIE+ " TEXT);";
