@@ -129,7 +129,7 @@ public class NewPhoto extends AppCompatActivity {
 
             Bitmap bitmap = DBFotoBtm;
 
-            File folder = Environment.getExternalStoragePublicDirectory("/storage/emulated/0/storage/emulated/test");// the file path
+            File folder = Environment.getExternalStoragePublicDirectory("/storage/emulated/test");// the file path
 
             //if it doesn't exist the folder will be created
            if(!folder.exists())
