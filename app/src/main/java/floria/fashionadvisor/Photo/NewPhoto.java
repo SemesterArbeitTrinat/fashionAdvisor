@@ -129,7 +129,7 @@ public class NewPhoto extends AppCompatActivity {
 
             Bitmap bitmap = DBFotoBtm;
 
-            File folder = Environment.getExternalStoragePublicDirectory("/storage/emulated/test");// the file path
+            File folder =new File(Environment.getExternalStorageDirectory() +  File.separator + "test");// the file path
 
             //if it doesn't exist the folder will be created
            if(!folder.exists())
@@ -141,7 +141,7 @@ public class NewPhoto extends AppCompatActivity {
          //   bitmap.saveBitmapToFile(bitmap, Environment.getInstance().getMyDir() + "/" + new Date().getTime() + ".jpg", Bitmap.CompressFormat.JPEG);
             FileOutputStream fos = null;
             try {
-               File file = new File(folder.toString()+ new Date().getTime() + ".png");
+               File file = new File(folder.toString()+"/"+ new Date().getTime() + ".png");
                 if (file.exists()) {
                     file.delete();
                 }
