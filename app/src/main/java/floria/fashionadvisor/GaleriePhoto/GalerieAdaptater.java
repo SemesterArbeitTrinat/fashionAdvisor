@@ -108,7 +108,7 @@ public class GalerieAdaptater extends ArrayAdapter {
         //Drawable drawable = new BitmapDrawable(alleCatItem.get(position).getBitmaph());
         //imageView.setImageDrawable(drawable);
 
-
+      //  dataBank.close();
         return v;
 
     }

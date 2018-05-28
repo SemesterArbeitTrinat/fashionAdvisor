@@ -1,12 +1,15 @@
 package floria.fashionadvisor.GaleriePhoto;
 
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +20,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
+import floria.fashionadvisor.MainActivity;
 import floria.fashionadvisor.R;
 import floria.fashionadvisor.database.DBOpenHelper;
 import floria.fashionadvisor.tomsc.decisiontree.Item;
@@ -32,7 +36,6 @@ public class GalerieItem extends Fragment {
 
     int index;
     private String nameCat;
-
     public void setNameCat(String nameCat) {
         this.nameCat = nameCat;
     }
@@ -53,6 +56,7 @@ public class GalerieItem extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

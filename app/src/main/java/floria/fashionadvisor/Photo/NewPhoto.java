@@ -1,7 +1,9 @@
 package floria.fashionadvisor.Photo;
 
+import android.Manifest;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -11,7 +13,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -25,6 +29,7 @@ import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import floria.fashionadvisor.MainActivity;
 import floria.fashionadvisor.R;
 import floria.fashionadvisor.database.DBDataSource;
 
@@ -34,7 +39,7 @@ import floria.fashionadvisor.database.DBDataSource;
 
 public class NewPhoto extends AppCompatActivity {
 
-
+    public static final String LOG_TAG = MainActivity.class.getSimpleName();
     private Camera mCamera;
     private CameraView mPreview;
     private FrameLayout  cSurface;
@@ -43,17 +48,24 @@ public class NewPhoto extends AppCompatActivity {
     public static String detectedColor;
     public static byte[] DBByteImage;
     public static String DBPhotoPath;
+    final int CAMERA = 123;
 
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Berechtigungsabfrage Kamera
+        if(ActivityCompat.checkSelfPermission(NewPhoto.this, Manifest.permission.CAMERA)
+                == PackageManager.PERMISSION_GRANTED)
+        {} else {
+            ActivityCompat.requestPermissions(NewPhoto.this, new String[]{Manifest.permission.CAMERA},
+                    CAMERA);}
+
+        //Layout
         setContentView(R.layout.neuaufnehmen);
         cSurface = (FrameLayout) findViewById(R.id.photo_view);
-
         newPic();
-
     }
 
 
@@ -131,10 +143,15 @@ public class NewPhoto extends AppCompatActivity {
 
             File folder =new File(Environment.getExternalStorageDirectory() +  File.separator + "test");// the file path
 
+            //File folder = Environment.getExternalStoragePublicDirectory("/storage/emulated/test");// the file path
+            //File folder = Environment.getExternalStoragePublicDirectory("/test");
+            Log.e(LOG_TAG,"Ordnerpfad: "+folder);
             //if it doesn't exist the folder will be created
-           if(!folder.exists())
-           {folder.mkdir();}
+           if(!folder.exists()) {
+               folder.mkdir();
 
+               Log.e(LOG_TAG, "Ordner erstellt");
+           }
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.PNG, 0, stream);
             byte[] data1 = stream.toByteArray();

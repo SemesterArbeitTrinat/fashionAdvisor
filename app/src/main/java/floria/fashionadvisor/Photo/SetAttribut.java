@@ -104,6 +104,7 @@ private DBDataSource DBspeichern;
          adapter = new TextCheked(this,styleList);
         //Style ist die Gridview
         style.setAdapter(adapter);
+        //DBspeichern.close();
 
     }
 

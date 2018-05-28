@@ -23,8 +23,9 @@
         <activity android:name=".Matchen"/>
         <activity android:name=".Photo.NewPhoto"/>
         <activity android:name=".Photo.SetAttribut"/>
+        <!--
         <activity android:name=".database.TestDB"/>
-
+        -->
     </application>
 
 

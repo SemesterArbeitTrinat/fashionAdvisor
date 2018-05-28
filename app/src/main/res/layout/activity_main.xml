@@ -39,6 +39,7 @@
             android:layout_gravity="center_horizontal"
             android:text="Neu aufnehemen" />
 
+        <!--
         <Button
             android:id="@+id/testdb"
             android:layout_width="160dp"
@@ -46,6 +47,7 @@
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal|center"
             android:text="TestDB" />
+            -->
 
 
     </LinearLayout>
