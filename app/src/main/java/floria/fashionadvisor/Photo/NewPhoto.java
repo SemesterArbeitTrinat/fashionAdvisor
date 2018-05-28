@@ -34,14 +34,10 @@ import floria.fashionadvisor.database.DBDataSource;
 
 public class NewPhoto extends AppCompatActivity {
 
-    static final int REQUEST_IMAGE_CAPTURE = 1;
+
     private Camera mCamera;
     private CameraView mPreview;
-    private FileOutputStream stream;
     private FrameLayout  cSurface;
-    private Uri file;
-    private ContentValues values;
-    public String mCurrentPhotoPath;
     public static Drawable DBphotoDrwb;
     public static Bitmap DBFotoBtm;
     public static String detectedColor;
@@ -133,7 +129,7 @@ public class NewPhoto extends AppCompatActivity {
 
             Bitmap bitmap = DBFotoBtm;
 
-            File folder = Environment.getExternalStoragePublicDirectory("/storage/emulated/test");// the file path
+            File folder = Environment.getExternalStoragePublicDirectory("/storage/emulated/0/storage/emulated/test");// the file path
 
             //if it doesn't exist the folder will be created
            if(!folder.exists())
@@ -167,91 +163,14 @@ public class NewPhoto extends AppCompatActivity {
                 }
             }
 
-           // Bundle bundle = new Bundle();
-           // bundle.putParcelable("bitmap", bitmap);
-           // setResult(bundle);
-
-           // cameraManager.restartPreview();*/
-        /*   if (data != null) {
-                try {
-                // Enregistrement de votre image
-
-                    if (stream != null) {
-                        stream.write(data);
-                        stream.flush();
-                        stream.close();
-                    }
-                } catch (Exception e) {
-                    // TODO: handle exception
-                }*/
-
-
-                cSurface.removeView(mPreview);
-
-
-
-
-                Intent callSetattribut = new Intent(NewPhoto.this, SetAttribut.class);
-                startActivity(callSetattribut);
-           // }
+             cSurface.removeView(mPreview);
+             Intent callSetattribut = new Intent(NewPhoto.this, SetAttribut.class);
+              startActivity(callSetattribut);
           }
         };
 
 
-    private File getFile() {
-        File folder = Environment.getExternalStoragePublicDirectory("/From_camera/imagens");// the file path
-
-        //if it doesn't exist the folder will be created
-        if(!folder.exists())
-        {folder.mkdir();}
-
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_"+ timeStamp + "_";
-        File image_file = null;
-
-        try {
-            image_file = File.createTempFile(imageFileName,".jpg",folder);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        mCurrentPhotoPath = image_file.getAbsolutePath();
-        return image_file;
-    }
-private void SavePicture(){
-   // mCurrentPhotoPath = image_file.getAbsolutePath();
-
-    try {
-        SimpleDateFormat timeStampFormat = new SimpleDateFormat(
-                "yyyy-MM-dd-HH.mm.ss");
-        String fileName = "photo_" + timeStampFormat.format(new Date())
-                + ".jpg";
-
-        // Metadata pour la photo
-        ContentValues values = new ContentValues();
-        values.put(MediaStore.Images.Media.TITLE, fileName);
-        values.put(MediaStore.Images.Media.DISPLAY_NAME, fileName);
-        values.put(MediaStore.Images.Media.DESCRIPTION, "Image prise par FormationCamera");
-        values.put(MediaStore.Images.Media.DATE_TAKEN, new Date().getTime());
-        values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
-
-        // Support de stockage
-           Uri taken = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,values);
-
-        // Ouverture du flux pour la sauvegarde
-        stream = (FileOutputStream) getContentResolver().openOutputStream(taken);
-        //DBPhotoPath=
-       // DBPhotoPath = taken.getPath();
-        Toast.makeText(getApplicationContext(), DBPhotoPath, Toast.LENGTH_LONG).show();
-        mCamera.takePicture(null, null, jpegCallback);
-    } catch (Exception e) {
-        // TODO: handle exception
-    }
-}
-
-
-
-    private String colortxt(int red, int green, int blue){
+      private String colortxt(int red, int green, int blue){
 
         String colorName;
         int colorId;
