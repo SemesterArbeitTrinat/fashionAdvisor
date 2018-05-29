@@ -24,12 +24,17 @@ android:orientation="vertical">
         android:layout_alignLeft="@+id/imageView"
         android:layout_alignStart="@+id/imageView"
         android:layout_below="@+id/imageView"
-        android:backgroundTint="@android:color/transparent"
-        android:button="@android:drawable/btn_radio"
+        android:button="@android:drawable/btn_star"
         android:text="Fav"
         android:textOff="Fav"
         android:textOn="Fav"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        />
+        <!-- android:background="@android:drawable/star_big_on"-->
+
+       <!-- android:button="@android:drawable/btn_radio"-->
+
+
 
     <Button
         android:id="@+id/button2"
@@ -41,5 +46,6 @@ android:orientation="vertical">
         android:background="@android:drawable/ic_menu_delete"
         android:backgroundTint="@android:color/holo_red_dark"
         android:text=" " />
+
 
 </RelativeLayout>

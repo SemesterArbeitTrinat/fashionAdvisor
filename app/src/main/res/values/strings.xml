@@ -8,7 +8,7 @@
     <string-array name="color_array">
         <item>- - - - -</item>
         <item>Schwarz</item>
-        <item>Weiss</item>
+        <item>Weiß</item>
         <item>Grau</item>
         <item>Blau</item>
         <item>Braun</item>
@@ -18,11 +18,11 @@
     </string-array>
 
     <string-array name="style_array">
-        <item>sport</item>
-        <item>abend</item>
-        <item>sommer</item>
-        <item>winter</item>
-        <item>buisness</item>
+        <item>Sport</item>
+        <item>Abend</item>
+        <item>Sommer</item>
+        <item>Winter</item>
+        <item>Buisness</item>
 
     </string-array>
 
@@ -30,7 +30,7 @@
         <item>- - - - -</item>
         <item>Hemd</item>
         <item>Bluse</item>
-        <item>Tshirt</item>
+        <item>T-shirt</item>
         <item>Top</item>
         <item>Pullover</item>
 

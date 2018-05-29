@@ -30,7 +30,7 @@
             android:id="@+id/All"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Alles" />
+            android:text="Alle" />
 
         <android.support.design.widget.TabItem
             android:id="@+id/Top"
@@ -42,7 +42,7 @@
             android:id="@+id/tshirt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tee-shirt" />
+            android:text="T-shirt" />
 
         <android.support.design.widget.TabItem
             android:id="@+id/Hosen"
@@ -54,8 +54,7 @@
             android:id="@+id/Pullover"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pulli" />
-
+            android:text="Pullis" />
 
 
     </android.support.design.widget.TabLayout>
