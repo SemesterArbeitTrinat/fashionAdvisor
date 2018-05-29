@@ -21,7 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import java.util.List;
 
-import floria.fashionadvisor.Permission.PermissionCamera;
+//import floria.fashionadvisor.Permission.PermissionCamera;
 import floria.fashionadvisor.database.DB;
 import floria.fashionadvisor.database.DBDataSource;
 import floria.fashionadvisor.MainActivity;
