@@ -24,16 +24,15 @@ android:orientation="vertical">
         android:layout_alignLeft="@+id/imageView"
         android:layout_alignStart="@+id/imageView"
         android:layout_below="@+id/imageView"
+        android:background="@android:color/transparent"
         android:button="@android:drawable/btn_star"
-        android:text="Fav"
-        android:textOff="Fav"
-        android:textOn="Fav"
-        android:textSize="14sp"
-        />
+        android:gravity="center_vertical"
+        android:text="fav"
+        android:textOff="fav"
+        android:textOn="fav"
+        android:textSize="14sp" />
         <!-- android:background="@android:drawable/star_big_on"-->
-
        <!-- android:button="@android:drawable/btn_radio"-->
-
 
 
     <Button
@@ -41,6 +40,7 @@ android:orientation="vertical">
         android:layout_width="50dp"
         android:layout_height="40dp"
         android:layout_alignBottom="@+id/radioButton"
+        android:layout_below="@+id/imageView"
         android:layout_toEndOf="@+id/radioButton"
         android:layout_toRightOf="@+id/radioButton"
         android:background="@android:drawable/ic_menu_delete"

@@ -38,7 +38,7 @@ public class ViewGalerie extends FragmentPagerAdapter {
                 fav.setNameCat("Top");
                 break;
             case 3:
-                fav.setNameCat("Tshirt");
+                fav.setNameCat("T-shirt");
                 break;
             case 4:
                 fav.setNameCat("Hose");

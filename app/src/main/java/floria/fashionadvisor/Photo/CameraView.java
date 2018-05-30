@@ -59,7 +59,7 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback, C
     public CameraView(Context context, Camera camera) {
         super(context);
         mCamera = camera;
-        mCamera.setDisplayOrientation(0);
+        mCamera.setDisplayOrientation(90);
 
 
         // Install a SurfaceHolder.Callback so we get notified when the
