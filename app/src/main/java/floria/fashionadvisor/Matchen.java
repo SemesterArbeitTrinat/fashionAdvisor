@@ -1,5 +1,6 @@
 package floria.fashionadvisor;
 
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -19,8 +20,15 @@ import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
 import android.widget.ViewSwitcher;
+
+import floria.fashionadvisor.Photo.SetAttribut;
 import floria.fashionadvisor.tomsc.decisiontree.Outfit;
+
+import static floria.fashionadvisor.tomsc.decisiontree.Ranking.setRankDown;
+import static floria.fashionadvisor.tomsc.decisiontree.Ranking.setRankUp;
+
 /**
  * Created by floria on 13/03/2018.
  */
@@ -33,6 +41,7 @@ private Button btnPrw;
 private  Button btnNxt;
 private  Button btnPrwU;
 private  Button btnNxtU;
+private Button acept;
 private Spinner styleSelected;
 private Outfit mOutfit;
 
@@ -50,6 +59,7 @@ private Outfit mOutfit;
         btnNxt = (Button) findViewById(R.id.buttonNxt);
         btnPrwU = (Button) findViewById(R.id.buttonPrwUnten);
         btnNxtU = (Button) findViewById(R.id.buttonNxtUnten);
+        acept = (Button) findViewById(R.id.accept);
 
          myImageSwitcher = (ImageSwitcher) findViewById(R.id.switchOben);
         myImageSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
@@ -95,6 +105,7 @@ private Outfit mOutfit;
 
         obenSwitch();
         untenSwitch();
+        choosedMatchen();
 
 
     }
@@ -145,6 +156,8 @@ private Outfit mOutfit;
         btnNxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                setRankDown(mOutfit.getUpperPart());
                 //Nächste Bitmap von der Liste speichern
              Drawable drawable = new BitmapDrawable(BitmapFactory.decodeFile(mOutfit.showNextUpperPart().getPath()));
                //Den Bitmap in den ImageSwitcher zuordnen
@@ -165,10 +178,27 @@ private Outfit mOutfit;
         btnNxtU.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setRankDown(mOutfit.getLowerPart());
                Drawable drawable = new BitmapDrawable(BitmapFactory.decodeFile(mOutfit.showNextLowerPart().getPath()));
                switchUnten.setImageDrawable(drawable);
             }
         });
+    }
+
+    private void choosedMatchen(){
+
+        acept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setRankUp(mOutfit.getLowerPart());
+                setRankUp(mOutfit.getUpperPart());
+                Toast.makeText(getApplicationContext(), "Outfit gewählt", Toast.LENGTH_LONG).show();
+                Intent callMain = new Intent(Matchen.this, MainActivity.class);
+                startActivity(callMain);
+
+            }
+        });
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
