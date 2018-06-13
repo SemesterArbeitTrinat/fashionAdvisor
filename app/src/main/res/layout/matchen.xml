@@ -101,9 +101,10 @@
         android:text="Style:"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/spinner"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/styleWahl" />
+         <!--app:layout_constraintEnd_toStartOf="@+id/spinner"-->
 
     <Button
         android:id="@+id/accept"
